@@ -1,0 +1,65 @@
+<div>
+  <h2>Book Add</h2>
+  <div>
+    <label
+      >Book category:
+      <input
+        [(ngModel)]="bookData.category"
+        placeholder="Book category"
+      /> </label
+    ><br />
+    <label
+      >Book title:
+      <input [(ngModel)]="bookData.title" placeholder="Book title" /> </label
+    ><br />
+    <label
+      >Book author:
+      <input [(ngModel)]="bookData.author" placeholder="Book author" /> </label
+    ><br />
+    <label
+      >Book year:
+      <input [(ngModel)]="bookData.year" placeholder="Book year" /> </label
+    ><br />
+    <label
+      >Book description:
+      <input
+        [(ngModel)]="bookData.description"
+        placeholder="Book description"
+      /> </label
+    ><br />
+    <label
+      >Book ISBN:
+      <input [(ngModel)]="bookData.ISBN" placeholder="Book ISBN" /> </label
+    ><br />
+    <label
+      >Book new_price:
+      <input
+        [(ngModel)]="bookData.new_price"
+        placeholder="Book new_price"
+      /> </label
+    ><br />
+    <label
+      >Book used_price:
+      <input
+        [(ngModel)]="bookData.used_price"
+        placeholder="Book used_price"
+      /> </label
+    ><br />
+    <label
+      >Book new_quantity:
+      <input
+        [(ngModel)]="bookData.new_quantity"
+        placeholder="Book new_quantity"
+      /> </label
+    ><br />
+    <label
+      >Book used_quantity:
+      <input
+        [(ngModel)]="bookData.used_quantity"
+        placeholder="Book used_quantity"
+      /> </label
+    ><br />
+  </div>
+  <button routerLink="/">Home</button>
+  <button (click)="addBook()">Save</button>
+</div>

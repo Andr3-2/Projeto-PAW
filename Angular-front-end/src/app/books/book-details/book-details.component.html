@@ -1,0 +1,54 @@
+<div *ngIf="book" class="books">
+  <table>
+    <tr>
+      <th>_id</th>
+      <td>{{ book._id }}</td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td>{{ book.title }}</td>
+    </tr>
+    <tr>
+      <th>category</th>
+      <td>{{ book.category }}</td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td>{{ book.description }}</td>
+    </tr>
+    <tr>
+      <th>author</th>
+      <td>{{ book.author }}</td>
+    </tr>
+    <tr>
+      <th>year</th>
+      <td>{{ book.year }}</td>
+    </tr>
+    <tr>
+      <th>ISBN</th>
+      <td>{{ book.ISBN }}</td>
+    </tr>
+    <tr>
+      <th>new_price</th>
+      <td>{{ book.new_price }}</td>
+    </tr>
+    <tr>
+      <th>used_price</th>
+      <td>{{ book.used_price }}</td>
+    </tr>
+    <tr>
+      <th>new_quantity</th>
+      <td>{{ book.new_quantity }}</td>
+    </tr>
+    <tr>
+      <th>used_quantity</th>
+      <td>{{ book.used_quantity }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <button routerLink="/book-edit/{{ book._id }}">update</button>
+    <button (click)="deleteBook(book._id)">delete</button>
+  </div>
+</div>
+<button routerLink="/">Home</button>
