@@ -3,25 +3,25 @@ export class Book {
   category: string;
   title: string;
   author: string;
-  year: string;
+  year: Number;
   description: string;
-  ISBN: string;
-  new_price: string;
-  used_price: string;
-  new_quantity: string;
-  used_quantity: string;
+  ISBN: Number;
+  new_price: Number;
+  used_price: Number;
+  new_quantity: Number;
+  used_quantity: Number;
 
   constructor(
     category: string,
     title: string,
     author: string,
-    year: string,
+    year: Number,
     description: string,
-    ISBN: string,
-    new_price: string,
-    used_price: string,
-    new_quantity: string,
-    used_quantity: string
+    ISBN: Number,
+    new_price: Number,
+    used_price: Number,
+    new_quantity: Number,
+    used_quantity: Number
   ) {
     this.category = category;
     this.title = title;
