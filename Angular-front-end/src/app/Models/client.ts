@@ -5,6 +5,7 @@ enum activityStateEnum{
 }
 
 export class Client {
+  _id!: string;
   fname: string;
   lname: string;
   email: string;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Book } from '../Models/book';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Client } from '../Models/client';
 
 const endpoint = 'http://localhost:3000/api/v1/';
 const httpOptions = {
@@ -15,6 +16,10 @@ const httpOptions = {
 })
 export class RestService {
   constructor(private http: HttpClient) {}
+
+  getClients():Observable<Client[]> {
+    return this.http.get<Client[]>(endpoint + 'clients/show');;
+  }
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(endpoint + 'books/show');

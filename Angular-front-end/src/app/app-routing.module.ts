@@ -4,6 +4,7 @@ import { BooksListingComponent } from './books/books-listing/books-listing.compo
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { BookAddComponent } from './books/book-add/book-add.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { ClientListingComponent } from './clients/client-listing/client-listing.component';
 
 
 
@@ -14,6 +15,12 @@ const routes: Routes = [
   { path: 'book-details/:id', component: BookDetailsComponent },
   { path: 'book-add', component: BookAddComponent },
   { path: 'book-edit/:id', component: BookEditComponent },
+
+  { path: 'clients', component: ClientListingComponent },
+  //{ path: 'book-details/:id', component: BookDetailsComponent },
+  //{ path: 'book-add', component: BookAddComponent },
+  //{ path: 'book-edit/:id', component: BookEditComponent },
+
 ];
 
 @NgModule({
