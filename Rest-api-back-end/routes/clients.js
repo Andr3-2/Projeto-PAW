@@ -3,13 +3,13 @@ var express = require("express");
 var router = express.Router();
 
 //router.get("/", clientController.showIndexPage);
-router.get('/show',clientController.showAll)
-router.get("/info/:id", clientController.moreInfo);
-router.get("/delete/:id", clientController.deleteClient);
-router.get("/create", clientController.createClientPage);
-router.post("/create/submit", clientController.createClient);
-router.get("/update/:id", clientController.updateClientPage);
-router.post("/update/submit", clientController.updateClient);
+router.get("/show",clientController.showAll);
+router.get("/",clientController.showAll);
+router.get("/show/:id", clientController.show);
+router.get("/create", clientController.create);
+router.get("/edit", clientController.edit);
+router.get("/delete/:id", clientController.delete);
+
 //router.post("/search",clientController.search);
 
 module.exports = router;
