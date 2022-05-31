@@ -11,6 +11,10 @@ import { BookAddComponent } from './books/book-add/book-add.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { ClientesListingComponent } from './clientes/clientes-listing/clientes-listing.component';
 import { ClienteDetailsComponent } from './clientes/cliente-details/cliente-details.component';
+import { EmployeesListingComponent } from './employees/employees-listing/employees-listing.component';
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
+import { EmployeeAddComponent } from './employees/employee-add/employee-add.component';
+import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { ClienteDetailsComponent } from './clientes/cliente-details/cliente-deta
     BookEditComponent,
     ClientesListingComponent,
     ClienteDetailsComponent,
+    EmployeesListingComponent,
+    EmployeeDetailsComponent,
+    EmployeeAddComponent,
+    EmployeeEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

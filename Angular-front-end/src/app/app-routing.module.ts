@@ -7,7 +7,10 @@ import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { ClientesListingComponent } from './clientes/clientes-listing/clientes-listing.component';
 import { ClienteDetailsComponent } from './clientes/cliente-details/cliente-details.component';
 
-
+import { EmployeesListingComponent } from './employees/employees-listing/employees-listing.component';
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
+import { EmployeeAddComponent } from './employees/employee-add/employee-add.component';
+import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/books', pathMatch: 'full' },
@@ -18,6 +21,11 @@ const routes: Routes = [
   { path: 'book-edit/:id', component: BookEditComponent },
   { path: 'clientes', component: ClientesListingComponent },
   { path: 'cliente-details/:id', component: ClienteDetailsComponent },
+
+  { path: 'employees', component: EmployeesListingComponent },
+  { path: 'employee-details/:id', component: EmployeeDetailsComponent },
+  { path: 'employee-add', component: EmployeeAddComponent },
+  { path: 'employee-edit/:id', component: EmployeeEditComponent },
 ];
 
 @NgModule({
@@ -25,4 +33,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-

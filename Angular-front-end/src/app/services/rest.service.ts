@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../Models/book';
 import { Cliente } from '../Models/cliente';
+import { Employee } from '../Models/employee';
 
 const endpoint = 'http://localhost:3000/api/v1/';
 const httpOptions = {
@@ -74,6 +75,38 @@ export class RestService {
   deleteCliente(id: string): Observable<Cliente> {
     return this.http.delete<Cliente>(
       endpoint + 'clients/delete/' + id,
+      httpOptions
+    );
+  }
+
+  // Employees - #########################################################
+
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(endpoint + 'employees/show');
+  }
+
+  getEmployee(id: String): Observable<Employee> {
+    return this.http.get<Employee>(endpoint + 'employees/show/' + id);
+  }
+
+  addEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(
+      endpoint + 'employees/create',
+      JSON.stringify(employee),
+      httpOptions
+    );
+  }
+
+  updateEmployee(id: string, employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(
+      endpoint + 'employees/edit/' + id,
+      JSON.stringify(employee),
+      httpOptions
+    );
+  }
+  deleteEmployee(id: string): Observable<Employee> {
+    return this.http.delete<Employee>(
+      endpoint + 'employees/delete/' + id,
       httpOptions
     );
   }
