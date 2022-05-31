@@ -9,6 +9,8 @@ import { BooksListingComponent } from './books/books-listing/books-listing.compo
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { BookAddComponent } from './books/book-add/book-add.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { ClientesListingComponent } from './clientes/clientes-listing/clientes-listing.component';
+import { ClienteDetailsComponent } from './clientes/cliente-details/cliente-details.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { BookEditComponent } from './books/book-edit/book-edit.component';
     BookDetailsComponent,
     BookAddComponent,
     BookEditComponent,
+    ClientesListingComponent,
+    ClienteDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
