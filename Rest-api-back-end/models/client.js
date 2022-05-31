@@ -15,4 +15,5 @@ var clientSchema = new mongoose.Schema({
   activityState: String,
 });
 
+
 module.exports = mongoose.model("Client", clientSchema);
