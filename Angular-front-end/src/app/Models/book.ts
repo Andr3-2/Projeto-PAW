@@ -1,37 +1,16 @@
 export class Book {
   _id!: string;
-  category: string;
-  title: string;
-  author: string;
-  year: Number;
-  description: string;
-  ISBN: Number;
-  new_price: Number;
-  used_price: Number;
-  new_quantity: Number;
-  used_quantity: Number;
-
+  
   constructor(
-    category: string,
-    title: string,
-    author: string,
-    year: Number,
-    description: string,
-    ISBN: Number,
-    new_price: Number,
-    used_price: Number,
-    new_quantity: Number,
-    used_quantity: Number
-  ) {
-    this.category = category;
-    this.title = title;
-    this.author = author;
-    this.year = year;
-    this.description = description;
-    this.ISBN = ISBN;
-    this.new_price = new_price;
-    this.used_price = new_price;
-    this.new_quantity = new_quantity;
-    this.used_quantity = new_quantity;
-  }
+    public category: string,
+    public title: string,
+    public author: string,
+    public year: string,
+    public description: string,
+    public ISBN: number,
+    public new_price: number,
+    public used_price: number,
+    public new_quantity: number,
+    public used_quantity: number
+  ) {}
 }

@@ -1,63 +1,43 @@
-const { render } = require("ejs");
-const { default: mongoose } = require("mongoose");
-var Employee = require("../models/employee");
-const { edit } = require("./bookController");
+const Employee = require("../models/employee");
 
 var employeeController = {};
 
-//## Read Employees, Read Employee, Delete Employee, Create Employee, Update Employee
+//## Read Employee, Read Employee, Create Employee, Update Employee, Delete Employee
 
-//Read Employees
-employeeController.showAll = (req, res) => {
+// mostra todos employees
+employeeController.showAll = function (req, res, next) {
   Employee.find({}).exec((err, dbEmployees) => {
     if (err) {
       console.log("Erro a ler");
-      res.redirect("/error");
+      next(err);
     } else {
-      //console.log(`Books Readed: \n ${dbEmployees}`);
+      console.log(dbEmployees);
       res.json(dbEmployees);
     }
   });
 };
 
-//Read Employee
-employeeController.show = (req, res) => {
-  var id = req.params.id;
-  console.log(`ID: \n ${id}`);
-  Employee.findOne({ _id: id }, function (err, results) {
+// mostra 1 employee por id
+employeeController.show = function (req, res, next) {
+  Employee.findOne({ _id: req.params.id }).exec((err, dbEmployee) => {
     if (err) {
-      console.log("Erro a gravar");
-      res.redirect("/error");
+      console.log("Erro a ler");
+      next(err);
     } else {
-      console.log(results);
-      var one = new Employee(results.Employee);
-      res.json(dbEmployees);
+      console.log(dbEmployee);
+      res.json(dbEmployee);
     }
   });
 };
 
-//Delete Employee
-employeeController.delete = (req, res, next) => {
-  var id = req.params.id;
-  console.log(`ID: \n ${id}`);
-  Employee.deleteOne({ _id: id }, function (err, results) {
-    if (err) {
-      console.log("Erro a gravar");
-      res.redirect("/error");
-    } else {
-      res.json(results);
-    }
-  });
-};
-
-//Create Employee
-employeeController.create = (req, res, next) => {
+// cria 1 employee
+employeeController.create = function (req, res, next) {
   var employee = new Employee(req.body);
-  console.log(`Employee Created: \n ${employee}`);
+
   employee.save((err) => {
     if (err) {
       console.log("Erro a gravar");
-      res.redirect("/error");
+      next(err);
     } else {
       console.log(employee);
       res.json(employee);
@@ -65,14 +45,27 @@ employeeController.create = (req, res, next) => {
   });
 };
 
-//Update Employee
-employeeController.edit = (req, res, next) => {
-  Employee.findByIdAndUpdate(req.body._id, req.body, (err, editedEmployee) => {
+// edita 1 employee
+employeeController.edit = function (req, res, next) {
+  Employee.findByIdAndUpdate(req.params.id, req.body, (err, editedEmployee) => {
     if (err) {
       console.log("Erro a gravar");
-      res.redirect("/error");
+      next(err);
     } else {
+      console.log(editedEmployee);
       res.json(editedEmployee);
+    }
+  });
+};
+
+// elimina 1 employee
+employeeController.delete = function (req, res, next) {
+  Employee.remove({ _id: req.params.id }).exec((err, deletedEmployee) => {
+    if (err) {
+      next(err);
+    } else {
+      console.log(deletedEmployee);
+      res.json(deletedEmployee);
     }
   });
 };

@@ -1,31 +1,23 @@
 import { DatePipe, getLocaleTimeFormat } from '@angular/common';
 import { Book } from './book';
 import { Employee } from './employee'
-import { Client } from './client';
+import { Cliente } from './cliente';
 
 export class transaction {
-  date: Date;
-  sender: any;
-  receiver: any;
-  books: Array<Book>;
-  totalPrice: Number;
+  _id!: string;
+  date: Date = new Date();
 
   public constructor(
-    sender: any,
-    receiver: any,
-    books: Array<Book>,
-    totalPrice: Number
+    public sender: any,
+    public receiver: any,
+    public books: Array<Book>,
+    public totalPrice: Number
   ) {
-    this.date = new Date();
-    this.sender = sender;
-    this.receiver = receiver;
-    this.books = books;
-    this.totalPrice = totalPrice;
-    if(this.sender !instanceof Employee &&
-        this.sender !instanceof Client ||
-        this.receiver !instanceof Employee &&
-        this.receiver !instanceof Client){
-        throw('Sender&Reciver Must Be Class.Employee/Class.Client');
+    if (
+      (this.sender! instanceof Employee && this.sender! instanceof Cliente) ||
+      (this.receiver! instanceof Employee && this.receiver! instanceof Cliente)
+    ) {
+      throw 'Sender&Reciver Must Be Class.Employee/Class.Client';
     }
   }
 }

@@ -1,3 +1,9 @@
+import { Book } from './book';
+
+enum activityStateEnum{
+    ACTIVE,NOTACTIVE
+}
+
 export class Cliente {
   _id!: string;
 
@@ -8,11 +14,11 @@ export class Cliente {
     public address: string,
     public zipcode: string,
     public city: string,
-    public contact: string,
-    public NIF: string,
-    public points: string,
-    public booksSold: [],
-    public booksBought: [],
-    public activityState: string
+    public contact: number,
+    public NIF: number,
+    public points: number,
+    public booksSold: Array<Book>,
+    public booksBought: Array<Book>,
+    public activityState: activityStateEnum
   ) {}
 }

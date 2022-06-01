@@ -1,43 +1,35 @@
-<h1>Clientes Listing</h1>
+<h1>clients Listing</h1>
 
-<button routerLink="/cliente-add">Add</button>
+<button routerLink="/client-add">Add</button>
 
-<table>
-  <tr>
-    <th>_id</th>
-    <th>fname</th>
-    <th>lname</th>
-    <th>email</th>
-    <th>address</th>
-    <th>zipcode</th>
-    <th>city</th>
-    <th>contact</th>
-    <th>NIF</th>
-    <th>points</th>
-    <th>booksSold</th>
-    <th>booksBought</th>
-    <th>activityState</th>
-  </tr>
-  <tr *ngFor="let cliente of clientes">
-    <td>
-      <a routerLink="/cliente-details/{{ cliente._id }}">{{ cliente._id }}</a>
-    </td>
-    <td>{{ cliente.fname }}</td>
-    <td>{{ cliente.lname }}</td>
-    <td>{{ cliente.email }}</td>
-    <td>{{ cliente.address }}</td>
-    <td>{{ cliente.zipcode }}</td>
-    <td>{{ cliente.city }}</td>
-    <td>{{ cliente.contact }}</td>
-    <td>{{ cliente.NIF }}</td>
-    <td>{{ cliente.points }}</td>
-    <td>{{ cliente.booksSold }}</td>
-    <td>{{ cliente.booksBought }}</td>
-    <td>{{ cliente.activityState }}</td>
-
-    <td>
-      <button routerLink="/cliente-edit/{{ cliente._id }}">update</button>
-    </td>
-    <td><button (click)="deleteCliente(cliente._id)">delete</button></td>
-  </tr>
-</table>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">email</th>
+        <th scope="col">Tel</th>
+        <th scope="col">NIF</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>
+          <a routerLink="/client-details/{{ cliente._id }}">{{
+            cliente._id
+          }}</a>
+        </td>
+        <td>{{ cliente.fname }} {{ cliente.lname }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.contact }}</td>
+        <td>{{ cliente.NIF }}</td>
+        <td>{{ cliente.activityState }}</td>
+        <td>
+          <button routerLink="/client-edit/{{ cliente._id }}">update</button>
+        </td>
+        <td><button (click)="deleteCliente(cliente._id)">delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,4 +1,4 @@
-var Book = require("../models/book");
+const Book = require("../models/book");
 
 var bookController = {};
 

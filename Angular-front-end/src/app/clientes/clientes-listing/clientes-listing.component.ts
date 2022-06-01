@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from '../../services/rest.service';
 import { Router } from '@angular/router';
-import { Cliente } from '../../Models/cliente';
+import { Cliente } from 'src/app/Models/cliente';
+import { RestService } from 'src/app/services/rest.service';
 
 @Component({
   selector: 'app-clientes-listing',
   templateUrl: './clientes-listing.component.html',
-  styleUrls: ['./clientes-listing.component.css'],
+  styleUrls: ['./clientes-listing.component.css']
 })
 export class ClientesListingComponent implements OnInit {
   clientes: Cliente[] = [];
@@ -14,21 +14,22 @@ export class ClientesListingComponent implements OnInit {
   constructor(private restService: RestService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getClientes();
+    this.getClients();
   }
 
-  getClientes(): void {
+  getClients(): void {
     this.restService.getClientes().subscribe((clientes) => (this.clientes = clientes));
   }
 
   deleteCliente(id: string) {
-    this.restService.deleteBook(id).subscribe(
+    this.restService.deleteCliente(id).subscribe(
       (res) => {
-        this.getClientes();
+        this.getClients();
       },
       (err) => {
         console.log(err);
       }
     );
   }
+
 }

@@ -1,73 +1,78 @@
-const { render } = require("ejs");
-const { default: mongoose } = require("mongoose");
-var Transaction = require("../models/transaction");
-var Client = require("../models/client");
-var Book = require("../models/book");
-const transaction = require("../models/transaction");
+const Transaction = require("../models/transaction");
+
 var transactionController = {};
 
-transactionController.showAll = (req, res, next) => {
-  transaction.find({}).exec(function (err, results) {
+//## Read Transaction, Read Transaction, Create Transaction, Update Transaction, Delete Transaction
+
+// mostra todas transactions
+transactionController.showAll = function (req, res, next) {
+  Transaction.find({}).exec((err, dbTransactions) => {
     if (err) {
-      console.log("Erro a gravar");
-      res.redirect("/error");
+      console.log("Erro a ler");
+      next(err);
     } else {
-      res.json(results)
+      console.log(dbTransactions);
+      res.json(dbTransactions);
     }
   });
 };
 
-transactionController.show = (req, res, next) => {
-  transaction.findOne({ _id: req.params.id }).exec(function (err, results) {
+// mostra 1 transaction por id
+transactionController.show = function (req, res, next) {
+  Transaction.findOne({ _id: req.params.id }).exec((err, dbTransaction) => {
     if (err) {
-      console.log("Erro a gravar");
-      res.redirect("/error");
+      console.log("Erro a ler");
+      next(err);
     } else {
-      res.json(results)
+      console.log(dbTransaction);
+      res.json(dbTransaction);
     }
   });
 };
 
-//Create Transaction
-transactionController.create = (req, res, next) => {
+// cria 1 transaction
+transactionController.create = function (req, res, next) {
   var transaction = new Transaction(req.body);
-  console.log(`Transaction Created: \n ${transaction}`);
+
   transaction.save((err) => {
     if (err) {
       console.log("Erro a gravar");
-      res.redirect("/error");
+      next(err);
     } else {
-      next();
+      console.log(transaction);
+      res.json(transaction);
     }
   });
 };
 
-transactionController.delete = (req, res, next) => {
-  transaction.findByIdAndDelete(
-    { _id: req.params.id },
-    function (err, results) {
+// edita 1 transaction
+transactionController.edit = function (req, res, next) {
+  Transaction.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err, editedTransaction) => {
       if (err) {
         console.log("Erro a gravar");
-        res.redirect("/error");
+        next(err);
       } else {
-        res.json(results)
+        console.log(editedTransaction);
+        res.json(editedTransaction);
       }
     }
   );
 };
 
-//Update Transaction
-transactionController.edit = (req, res, next) => {
-  transaction.findByIdAndUpdate(req.body._id, req.body, (err, editedTransaction) => {
+// elimina 1 transaction
+transactionController.delete = function (req, res, next) {
+  Transaction.remove({ _id: req.params.id }).exec((err, deletedTransaction) => {
     if (err) {
-      console.log("Erro a gravar");
-      res.redirect("/error");
+      next(err);
     } else {
-      res.json(editedTransaction);
+      console.log(deletedTransaction);
+      res.json(deletedTransaction);
     }
   });
 };
-
 
 /*transactionController.search = (req, res, next) =>{
   transaction.find({ [req.body.searchOpt] : {$regex: req.body.search }},(err,transaction) =>{

@@ -3,38 +3,18 @@ enum activityStateEnum{
 }
 
 export class Employee {
-  fname: string;
-  lname: string;
-  email: string;
-  address: string;
-  zipcode: string;
-  city: string;
-  contact: Number;
-  NIF: Number;
-  salary: Number;
-  activityState: activityStateEnum;
+  _id!: string;
 
-  public constructor(
-    fname: string,
-    lname: string,
-    email: string,
-    address: string,
-    zipcode: string,
-    city: string,
-    contact: Number,
-    NIF: Number,
-    salary: Number,
-    activityState: activityStateEnum
-  ) {
-    this.fname = fname;
-    this.lname = lname;
-    this.email = email;
-    this.address = address;
-    this.zipcode = zipcode;
-    this.city = city;
-    this.contact = contact;
-    this.NIF = NIF;
-this.salary = salary;
-    this.activityState = activityState;
-  }
+  constructor(
+    public fname: string,
+    public lname: string,
+    public email: string,
+    public address: string,
+    public zipcode: string,
+    public city: string,
+    public contact: number,
+    public NIF: number,
+    public salary: number,
+    public activityState: activityStateEnum
+  ) {}
 }
