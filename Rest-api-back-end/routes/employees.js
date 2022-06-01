@@ -9,9 +9,9 @@ router.get("/", function (req, res, next) {
 
 router.get("/show", employeeController.showAll);
 router.get("/show/:id", employeeController.show);
-router.get("/create", employeeController.create);
-router.get("/edit", employeeController.edit);
-router.get("/delete/:id", employeeController.delete);
+router.post("/create", employeeController.create);
+router.put("/edit", employeeController.edit);
+router.delete("/delete/:id", employeeController.delete);
 
 //router.post("/search",employeeController.search);
 

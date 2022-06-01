@@ -11,7 +11,7 @@ export class transaction {
     public sender: any,
     public receiver: any,
     public books: Array<Book>,
-    public totalPrice: Number
+    public totalPrice: number
   ) {
     if (
       (this.sender! instanceof Employee && this.sender! instanceof Cliente) ||
