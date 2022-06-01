@@ -3,12 +3,12 @@ import { RestService } from '../../services/rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-book-details',
-  templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.css'],
+  selector: 'app-employee-details',
+  templateUrl: './employee-details.component.html',
+  styleUrls: ['./employee-details.component.css'],
 })
-export class BookDetailsComponent implements OnInit {
-  book: any;
+export class EmployeeDetailsComponent implements OnInit {
+  employee: any;
 
   constructor(
     public restService: RestService,
@@ -18,14 +18,14 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.restService
-      .getBook(this.route.snapshot.params['id'])
+      .getEmployee(this.route.snapshot.params['id'])
       .subscribe((data: {}) => {
-        this.book = data;
+        this.employee = data;
       });
   }
 
-  deleteBook(id: string) {
-    this.restService.deleteBook(id).subscribe(
+  deleteEmployee(id: string) {
+    this.restService.deleteEmployee(id).subscribe(
       (res) => {
         this.router.navigate(['/']);
       },
