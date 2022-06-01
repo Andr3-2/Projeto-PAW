@@ -1,1 +1,91 @@
-<p>client-add works!</p>
+<div>
+  <h2>Client Add</h2>
+  <div>
+    <label
+      >Client fname:
+      <input
+        [(ngModel)]="clienteData.fname"
+        placeholder="Client fname"
+      /> </label
+    ><br />
+    <label
+      >Client lname:
+      <input
+        [(ngModel)]="clienteData.lname"
+        placeholder="Client lname"
+      /> </label
+    ><br />
+    <label
+      >Client email:
+      <input
+        [(ngModel)]="clienteData.email"
+        placeholder="Client email"
+      /> </label
+    ><br />
+    <label
+      >Client address:
+      <input
+        [(ngModel)]="clienteData.address"
+        placeholder="Client address"
+      /> </label
+    ><br />
+    <label
+      >Client zipcode:
+      <input
+        [(ngModel)]="clienteData.zipcode"
+        placeholder="Client zipcode"
+      /> </label
+    ><br />
+    <label
+      >Client city:
+      <input [(ngModel)]="clienteData.city" placeholder="Client city" /> </label
+    ><br />
+    <label
+      >Client contact:
+      <input
+        type="number"
+        [(ngModel)]="clienteData.contact"
+        placeholder="Client contact"
+      /> </label
+    ><br />
+    <label
+      >Client NIF:
+      <input
+        type="number"
+        [(ngModel)]="clienteData.NIF"
+        placeholder="Client NIF"
+      /> </label
+    ><br />
+    <label
+      >Client points:
+      <input
+        type="number"
+        [(ngModel)]="clienteData.points"
+        placeholder="Client points"
+      /> </label
+    ><br />
+    <label
+      >Client booksSold:
+      <input
+        [(ngModel)]="clienteData.booksSold"
+        placeholder="Client booksSold"
+      /> </label
+    ><br />
+    <label
+      >Client booksBought:
+      <input
+        [(ngModel)]="clienteData.booksBought"
+        placeholder="Client booksBought"
+      /> </label
+    ><br />
+    <label
+      >Client activityState:
+      <input
+        [(ngModel)]="clienteData.activityState"
+        placeholder="Client activityState"
+      /> </label
+    ><br />
+  </div>
+  <button routerLink="/clientes">Home</button>
+  <button (click)="addCliente()">Save</button>
+</div>
