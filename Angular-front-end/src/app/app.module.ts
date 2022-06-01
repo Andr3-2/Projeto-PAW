@@ -19,18 +19,25 @@ import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.c
 @NgModule({
   declarations: [
     AppComponent,
+    /*BOOKS COMPONETS*/
     BooksListingComponent,
     BookDetailsComponent,
     BookAddComponent,
     BookEditComponent,
-    ClientesListingComponent,
-    ClienteDetailsComponent,
-    EmployeesListingComponent,
-    EmployeeDetailsComponent,
-    EmployeeAddComponent,
-    EmployeeEditComponent,
+    /*BOOKS CLIENT*/
+    ClientAddComponent,
+    ClientListingComponent,
+    ClientAddComponent,
+    ClientDetailsComponent,
+    ClientEditComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,11 +1,14 @@
+const { next } = require("console-scanner");
+const { default: mongoose } = require("mongoose");
+const client = require("../models/client");
 var Client = require("../models/client");
 
 var clientController = {};
 
-//## Read Clients, Read Client, Create Client, Update Client, Delete Client
+//## Read Clients, Read Client, Delete Client, Create Client, Update Client
 
-// mostra todos clients
-clientController.showAll = function (req, res, next) {
+//Read Clients
+clientController.showAll = (req, res) => {
   Client.find({}).exec((err, dbClients) => {
     if (err) {
       console.log("Erro a ler");
@@ -17,9 +20,9 @@ clientController.showAll = function (req, res, next) {
   });
 };
 
-// mostra 1 client por id
-clientController.show = function (req, res, next) {
-  Client.findOne({ _id: req.params.id }).exec((err, dbClient) => {
+//Read Clients
+clientController.show = (req, res) => {
+  Client.find({ _id: req.params.id }).exec((err, dbClient) => {
     if (err) {
       console.log("Erro a ler");
       next(err);
@@ -30,44 +33,59 @@ clientController.show = function (req, res, next) {
   });
 };
 
-// cria 1 client 
-clientController.create = function (req, res, next) {
-  var client = new Client(req.body);
+//Delete Client
+clientController.delete = (req, res, next) => {
+  var id = req.params.id;
+  console.log(`ID: \n ${id}`);
+  Client.deleteOne({ _id: id }, function (err, deleteClient) {
+    if (err) {
+      console.log("Erro a gravar");
+      res.redirect("/error");
+    } else {
+      res.json(deleteClient);
+    }
+  });
+};
 
+//Create Client
+clientController.create = (req, res, next) => {
+  var client = new Client(req.body);
+  console.log(`Client Created: \n ${client}`);
   client.save((err) => {
     if (err) {
       console.log("Erro a gravar");
-      next(err);
+      res.redirect("/error");
     } else {
-      console.log(client);
       res.json(client);
     }
   });
 };
 
-// edita 1 client
-clientController.edit = function (req, res, next) {
-  Book.findByIdAndUpdate(req.params.id, req.body, (err, editedClient) => {
+//Update Client
+clientController.edit = (req, res, next) => {
+  Client.findByIdAndUpdate(req.body._id, req.body, (err, editedClient) => {
     if (err) {
       console.log("Erro a gravar");
-      next(err);
+      res.redirect("/error");
     } else {
-      console.log(editedClient);
-      res.json(editedClient);
+      res.json(client);
     }
   });
 };
 
-// elimina 1 client
-clientController.delete = function (req, res, next) {
-  Client.remove({ _id: req.params.id }).exec((err, deletedClient) => {
-    if (err) {
-      next(err);
-    } else {
-      console.log(deletedClient);
-      res.json(deletedClient);
+/*
+clientController.search = (req, res, next) => {
+  Client.find(
+    { [req.body.searchOpt]: { $regex: req.body.search } },
+    (err, client) => {
+      if (err) {
+        res.redirect("/error");
+      } else {
+        console.log(client);
+        res.render("clients/client", { clients: client });
+      }
     }
-  });
-};
+  );
+};*/
 
 module.exports = clientController;

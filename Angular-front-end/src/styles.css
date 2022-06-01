@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+button {
+  margin: 5px;
+}

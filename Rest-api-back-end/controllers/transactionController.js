@@ -1,73 +1,82 @@
+const { render } = require("ejs");
+const { default: mongoose } = require("mongoose");
 var Transaction = require("../models/transaction");
-
+var Client = require("../models/client");
+var Book = require("../models/book");
+const transaction = require("../models/transaction");
 var transactionController = {};
 
-//## Read Transaction, Read Transaction, Create Transaction, Update Transaction, Delete Transaction
-
-// mostra todas transactions
-transactionController.showAll = function (req, res, next) {
-  Transaction.find({}).exec((err, dbTransactions) => {
+transactionController.showAll = (req, res, next) => {
+  transaction.find({}).exec(function (err, results) {
     if (err) {
-      console.log("Erro a ler");
-      next(err);
+      console.log("Erro a gravar");
+      res.redirect("/error");
     } else {
-      console.log(dbTransactions);
-      res.json(dbTransactions);
+      res.json(results)
     }
   });
 };
 
-// mostra 1 transaction por id
-transactionController.show = function (req, res, next) {
-  Transaction.findOne({ _id: req.params.id }).exec((err, dbTransaction) => {
+transactionController.show = (req, res, next) => {
+  transaction.findOne({ _id: req.params.id }).exec(function (err, results) {
     if (err) {
-      console.log("Erro a ler");
-      next(err);
+      console.log("Erro a gravar");
+      res.redirect("/error");
     } else {
-      console.log(dbTransaction);
-      res.json(dbTransaction);
+      res.json(results)
     }
   });
 };
 
-// cria 1 transaction
-transactionController.create = function (req, res, next) {
+//Create Transaction
+transactionController.create = (req, res, next) => {
   var transaction = new Transaction(req.body);
-
+  console.log(`Transaction Created: \n ${transaction}`);
   transaction.save((err) => {
     if (err) {
       console.log("Erro a gravar");
-      next(err);
+      res.redirect("/error");
     } else {
-      console.log(transaction);
-      res.json(transaction);
+      next();
     }
   });
 };
 
-// edita 1 transaction
-transactionController.edit = function (req, res, next) {
-  Transaction.findByIdAndUpdate(req.params.id, req.body, (err, editedTransaction) => {
+transactionController.delete = (req, res, next) => {
+  transaction.findByIdAndDelete(
+    { _id: req.params.id },
+    function (err, results) {
+      if (err) {
+        console.log("Erro a gravar");
+        res.redirect("/error");
+      } else {
+        res.json(results)
+      }
+    }
+  );
+};
+
+//Update Transaction
+transactionController.edit = (req, res, next) => {
+  transaction.findByIdAndUpdate(req.body._id, req.body, (err, editedTransaction) => {
     if (err) {
       console.log("Erro a gravar");
-      next(err);
+      res.redirect("/error");
     } else {
-      console.log(editedTransaction);
       res.json(editedTransaction);
     }
   });
 };
 
-// elimina 1 transaction
-transactionController.delete = function (req, res, next) {
-  Transaction.remove({ _id: req.params.id }).exec((err, deletedTransaction) => {
-    if (err) {
-      next(err);
-    } else {
-      console.log(deletedTransaction);
-      res.json(deletedTransaction);
+
+/*transactionController.search = (req, res, next) =>{
+  transaction.find({ [req.body.searchOpt] : {$regex: req.body.search }},(err,transaction) =>{
+    if(err){
+      res.redirect("/error")
+    }else{
+      res.render("transactions/transaction",{transactions: transaction});
     }
   });
-};
+};*/
 
 module.exports = transactionController;

@@ -1,0 +1,33 @@
+<h1>clients Listing</h1>
+
+<button routerLink="/client-add">Add</button>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">email</th>
+        <th scope="col">Tel</th>
+        <th scope="col">NIF</th>
+        <th scope="col">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>
+          <a routerLink="/client-details/{{ client._id }}">{{ client._id }}</a>
+        </td>
+        <td>{{ client.fname }} {{ client.lname }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.contact }}</td>
+        <td>{{ client.NIF }}</td>
+        <td>{{ client.activityState }}</td>
+        <!--<td>
+          <button routerLink="/client-edit/{{ client._id }}">update</button>
+        </td>-->
+        <!--<td><button (click)="deleteClient(client._id)">delete</button></td>-->
+      </tr>
+    </tbody>
+  </table>
+</div>
