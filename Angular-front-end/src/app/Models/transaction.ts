@@ -3,7 +3,7 @@ import { Book } from './book';
 import { Employee } from './employee'
 import { Cliente } from './cliente';
 
-export class transaction {
+export class Transaction {
   _id!: string;
   date: Date = new Date();
 
