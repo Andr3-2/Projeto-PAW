@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { Book } from '../../Models/book';
+
+
+@Component({
+  selector: 'app-shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.css'],
+})
+export class ShoppingCartComponent implements OnInit {
+  cart: Book[] = [];
+
+  constructor(private shoppingCartService: ShoppingCartService) {}
+
+  ngOnInit(): void {
+    this.shoppingCartService.cart.subscribe(
+      (cart) => {
+        this.cart = cart;
+        console.log(JSON.stringify(cart));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  addBookToCart(book: Book): void {
+    this.shoppingCartService.addBookToCart(book);
+  }
+
+  removeBookFromCart(index: number): void {
+    this.shoppingCartService.removeBookFromCart(index);
+  }
+
+  clearCart() {
+    this.shoppingCartService.clearCart();
+  }
+}

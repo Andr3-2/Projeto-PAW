@@ -1,0 +1,9 @@
+
+<div *ngIf="cart.length > 0">
+  <h1>ShoppingCart</h1>
+  <div *ngFor="let book of cart; index as i">
+    <span>{{ book._id }}</span>
+    <button (click)="removeBookFromCart(i)">remove</button>
+  </div>
+  <button (click)="clearCart()">clear</button>
+</div>

@@ -10,6 +10,7 @@ import { BooksListingComponent } from './books/books-listing/books-listing.compo
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { BookAddComponent } from './books/book-add/book-add.component';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { BooksListingBComponent } from './books/books-listing-b/books-listing-b.component';
 
 import { ClientesListingComponent } from './clientes/clientes-listing/clientes-listing.component';
 import { ClienteDetailsComponent } from './clientes/cliente-details/cliente-details.component';
@@ -21,6 +22,14 @@ import { EmployeeDetailsComponent } from './employees/employee-details/employee-
 import { EmployeeAddComponent } from './employees/employee-add/employee-add.component';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 
+import { TransactionsListingComponent } from './transactions/transactions-listing/transactions-listing.component';
+import { TransactionAddComponent } from './transactions/transaction-add/transaction-add.component';
+import { TransactionDetailsComponent } from './transactions/transaction-details/transaction-details.component';
+import { TransactionEditComponent } from './transactions/transaction-edit/transaction-edit.component';
+
+import { ShoppingCartComponent } from './common/shopping-cart/shopping-cart.component';
+import { MainPageComponent } from './main-page/main-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +38,7 @@ import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.c
     BookDetailsComponent,
     BookAddComponent,
     BookEditComponent,
+    BooksListingBComponent,
     /*CLIENTES COMPONETS*/
     ClientesListingComponent,
     ClienteDetailsComponent,
@@ -39,13 +49,15 @@ import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.c
     EmployeeDetailsComponent,
     EmployeeAddComponent,
     EmployeeEditComponent,
+    /*TRANSACTIONS COMPONETS*/
+    TransactionsListingComponent,
+    TransactionAddComponent,
+    TransactionDetailsComponent,
+    TransactionEditComponent,
+    ShoppingCartComponent,
+    MainPageComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

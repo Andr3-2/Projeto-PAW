@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Book } from '../Models/book';
 import { Cliente } from '../Models/cliente';
 import { Employee } from '../Models/employee';
+import { Transaction } from '../Models/transaction';
 
 const endpoint = 'http://localhost:3000/api/v1/';
 const httpOptions = {
@@ -107,6 +108,41 @@ export class RestService {
   deleteEmployee(id: string): Observable<Employee> {
     return this.http.delete<Employee>(
       endpoint + 'employees/delete/' + id,
+      httpOptions
+    );
+  }
+
+  // Transactions - #########################################################
+
+  getTransactions(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(endpoint + 'transactions/show');
+  }
+
+  getTransaction(id: String): Observable<Transaction> {
+    return this.http.get<Transaction>(endpoint + 'transactions/show/' + id);
+  }
+
+  addTransaction(transaction: Transaction): Observable<Transaction> {
+    return this.http.post<Transaction>(
+      endpoint + 'transactions/create',
+      JSON.stringify(transaction),
+      httpOptions
+    );
+  }
+
+  updateTransaction(
+    id: string,
+    transaction: Transaction
+  ): Observable<Transaction> {
+    return this.http.put<Transaction>(
+      endpoint + 'transactions/edit/' + id,
+      JSON.stringify(transaction),
+      httpOptions
+    );
+  }
+  deleteTransaction(id: string): Observable<Transaction> {
+    return this.http.delete<Transaction>(
+      endpoint + 'transactions/delete/' + id,
       httpOptions
     );
   }
