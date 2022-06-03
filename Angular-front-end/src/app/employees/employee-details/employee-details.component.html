@@ -1,0 +1,54 @@
+<div *ngIf="employee" class="employees">
+  <table>
+    <tr>
+      <th>_id</th>
+      <td>{{ employee._id }}</td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td>{{ employee.fname }}</td>
+    </tr>
+    <tr>
+      <th>category</th>
+      <td>{{ employee.lname }}</td>
+    </tr>
+    <tr>
+      <th>description</th>
+      <td>{{ employee.email }}</td>
+    </tr>
+    <tr>
+      <th>author</th>
+      <td>{{ employee.address }}</td>
+    </tr>
+    <tr>
+      <th>year</th>
+      <td>{{ employee.zipcode }}</td>
+    </tr>
+    <tr>
+      <th>ISBN</th>
+      <td>{{ employee.city }}</td>
+    </tr>
+    <tr>
+      <th>new_price</th>
+      <td>{{ employee.contact }}</td>
+    </tr>
+    <tr>
+      <th>used_price</th>
+      <td>{{ employee.NIF }}</td>
+    </tr>
+    <tr>
+      <th>new_quantity</th>
+      <td>{{ employee.salary }}</td>
+    </tr>
+    <tr>
+      <th>used_quantity</th>
+      <td>{{ employee.activityState }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <button routerLink="/employee-edit/{{ employee._id }}">update</button>
+    <button (click)="deleteEmployee(employee._id)">delete</button>
+  </div>
+</div>
+<button routerLink="/employees">Home</button>

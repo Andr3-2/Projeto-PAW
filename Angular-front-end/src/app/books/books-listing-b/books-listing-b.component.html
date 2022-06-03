@@ -1,0 +1,22 @@
+<h1>Book Store</h1>
+
+<div class="container">
+  <div *ngFor="let book of books" class="object">
+    <div class="text">
+      <span>{{ book.title }}</span>
+    </div>
+    <div class="image">
+      <img
+        src="http://smartmobilestudio.com/wp-content/uploads/2012/06/leather-book-preview.png"
+        alt="Book Image"
+        width="150"
+        height="150"
+      />
+    </div>
+    <div class="text">
+      <button (click)="addBookToCart(book)">Add Carrinho</button>
+    </div>
+  </div>
+</div>
+
+

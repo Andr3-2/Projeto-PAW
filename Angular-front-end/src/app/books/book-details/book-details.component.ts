@@ -10,7 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BookDetailsComponent implements OnInit {
   book: any;
 
-  constructor(public restService: RestService, private route: ActivatedRoute,    private router: Router) {}
+  constructor(
+    public restService: RestService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.restService
@@ -23,7 +27,7 @@ export class BookDetailsComponent implements OnInit {
   deleteBook(id: string) {
     this.restService.deleteBook(id).subscribe(
       (res) => {
-          this.router.navigate(['/']);
+        this.router.navigate(['/']);
       },
       (err) => {
         console.log(err);
