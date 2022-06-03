@@ -1,0 +1,78 @@
+<div>
+  <h2>Employee Update</h2>
+  <div>
+    <label
+      >Employee fname:
+      <input
+        [(ngModel)]="employeeData.fname"
+        placeholder="Employee fname"
+      /> </label
+    ><br />
+    <label
+      >Employee lname:
+      <input
+        [(ngModel)]="employeeData.lname"
+        placeholder="Employee lname"
+      /> </label
+    ><br />
+    <label
+      >Employee email:
+      <input
+        [(ngModel)]="employeeData.email"
+        placeholder="Employee email"
+      /> </label
+    ><br />
+    <label
+      >Employee address:
+      <input
+        [(ngModel)]="employeeData.address"
+        placeholder="Employee address"
+      /> </label
+    ><br />
+    <label
+      >Employee zipcode:
+      <input
+        [(ngModel)]="employeeData.zipcode"
+        placeholder="Employee zipcode"
+      /> </label
+    ><br />
+    <label
+      >Employee city:
+      <input
+        [(ngModel)]="employeeData.city"
+        placeholder="Employee city"
+      /> </label
+    ><br />
+    <label
+      >Employee contact:
+      <input
+        [(ngModel)]="employeeData.contact"
+        placeholder="Employee contact"
+      /> </label
+    ><br />
+    <label
+      >Employee NIF:
+      <input
+        [(ngModel)]="employeeData.NIF"
+        placeholder="Employee NIF"
+      /> </label
+    ><br />
+    <label
+      >Employee salary:
+      <input
+        type="number"
+        [(ngModel)]="employeeData.salary"
+        placeholder="Employee salary"
+      /> </label
+    ><br />
+    <label
+      >Employee activityState:
+      <input
+        [(ngModel)]="employeeData.activityState"
+        placeholder="Employee activityState"
+      /> </label
+    ><br />
+  </div>
+  <button (click)="updateEmployee()">update</button>
+</div>
+<button routerLink="/employees">Home</button>

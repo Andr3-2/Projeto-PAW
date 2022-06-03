@@ -1,4 +1,4 @@
-#### Projeto PAW Milestone 2
+# Projeto PAW Milestone 2
 
 Neste projeto temos 2 aplicações ...
 
@@ -10,48 +10,49 @@ Para a aplicação funcionar, ambas tem de estar ativas ...
 
 Assim ... sendo ...
 
-### Como usar a aplicação?
+## Como usar a aplicação?
 
-## 1 - Navegar para os repositórios das aplicações ...
+- **click startAPP.bat**
+- default link http://localhost:4200/
 
-Deve abrir dividir a terminal pra poder executar ambas as aplicações na mesma janela ...
+[//]: <> (## 1 - Nvegar para os repositórios das aplicações ...)
 
-Posteriormente ...
+[//]: <> (Deve abrir dividir a terminal pra poder executar ambas as aplicações na mesma janela ...)
 
-# terminal1
-cd .\Rest-api-back-end\
+[//]: <> (Posteriormente ...)
 
-# terminal2
-cd .\Angular-front-end\ 
+[//]: <>  (# terminal1)
+[//]: <>  (cd .\Rest-api-back-end\ )
 
-
-## 2 - Instalar dependencias
-
-Em ambas as aplicações, quando corridas pela primeira vez, é preciso instalar dependencias ... para isso ... 
-
-# terminal1
-npm install
-
-# terminal2
-npm install
+[//]: <>  (# terminal2)
+[//]: <>  (cd .\Angular-front-end\ )
 
 
-## 3 - Correr a aplicação
+[//]: <>  (## 2 - Instalar dependencias)
 
-Resta apenas correr as aplicações ...
+[//]: <> (Em ambas as aplicações, quando corridas pela primeira vez, é preciso instalar dependencias ... para isso ... )
 
-# terminal1
-npm start
+[//]: <>  (# terminal1)
+[//]: <>  (npm install)
 
-# terminal2
-npm start
-(ou) ... ng server -o
-
-# abrir o browser
-http://localhost:4200/
+[//]: <>  (# terminal2)
+[//]: <>  (npm install)
 
 
-#### Informação extra
+[//]: <>  (## 3 - Correr a aplicação)
+
+[//]: <>  (Resta apenas correr as aplicações ...)
+
+[//]: <>  (# terminal1)
+[//]: <>  (npm start)
+
+[//]: <>  (# terminal2)
+[//]: <>  (npm start)
+[//]: <>  ( ou ... ng server -o)
+
+
+
+## Informação extra
 A Rest-api-back-end, corre na porta 3000 ...
 A Angular-front-end, corre na porta 4200 ...
 
