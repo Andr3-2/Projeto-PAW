@@ -9,6 +9,11 @@
       /> </label
     ><br />
     <label
+      >PassWord
+      <input [(ngModel)]="clienteData.password" type="password" placeholder="password" /> </label
+    ><br />
+
+    <label
       >Client lname:
       <input
         [(ngModel)]="clienteData.lname"
@@ -65,25 +70,14 @@
       /> </label
     ><br />
     <label
-      >Client booksSold:
-      <input
-        [(ngModel)]="clienteData.booksSold"
-        placeholder="Client booksSold"
-      /> </label
-    ><br />
-    <label
-      >Client booksBought:
-      <input
-        [(ngModel)]="clienteData.booksBought"
-        placeholder="Client booksBought"
-      /> </label
-    ><br />
-    <label
       >Client activityState:
-      <input
+      <select
         [(ngModel)]="clienteData.activityState"
         placeholder="Client activityState"
-      /> </label
+      >
+        <option value="ACTIVE">Active</option>
+        <option value="NOTACTIVE">not Active</option>
+      </select> </label
     ><br />
   </div>
   <button routerLink="/clientes">Home</button>

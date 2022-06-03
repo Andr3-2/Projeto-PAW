@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var clientSchema = new mongoose.Schema({
   fname: { type: String, required: true },
   lname: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
   address: String,
   zipcode: String,
   city: String,
@@ -12,7 +12,7 @@ var clientSchema = new mongoose.Schema({
   points: { type: Number, default: 0 },
   booksSold: Array,
   booksBought: Array,
-  activityState: { type: String, required: true, default: "Active" },
+  activityState: { type: String, required: true, default: "ACTIVE" },
   password: String,
 });
 
