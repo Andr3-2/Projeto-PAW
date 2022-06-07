@@ -6,19 +6,42 @@ enum activityStateEnum{
 
 export class Cliente {
   _id!: string;
+  fname: string;
+  lname: string;
+  email: string;
+  address: string;
+  zipcode: string;
+  city: string;
+  contact: Number;
+  NIF: Number;
+  points: Number;
+  booksSold: Array<Book>;
+  booksBought: Array<Book>;
+  activityState: activityStateEnum;
 
-  constructor(
-    public fname: string,
-    public lname: string,
-    public email: string,
-    public address: string,
-    public zipcode: string,
-    public city: string,
-    public contact: number,
-    public NIF: number,
-    public points: number,
-    public booksSold: Array<Book>,
-    public booksBought: Array<Book>,
-    public activityState: activityStateEnum
-  ) {}
+  public constructor(
+    fname: string,
+    lname: string,
+    email: string,
+    address: string,
+    zipcode: string,
+    city: string,
+    contact: Number,
+    NIF: Number,
+    points: Number,
+    activityState: activityStateEnum
+  ) {
+    this.fname = fname;
+    this.lname = lname;
+    this.email = email;
+    this.address = address;
+    this.zipcode = zipcode;
+    this.city = city;
+    this.contact = contact;
+    this.NIF = NIF;
+    this.points = points;
+    this.booksSold = new Array();
+    this.booksBought = new Array();
+    this.activityState = activityState;
+  }
 }

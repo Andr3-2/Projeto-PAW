@@ -1,4 +1,8 @@
+<div class="container">
 <div *ngIf="employee" class="employees">
+
+  <h1>Employee - {{ employee.fname }} {{ employee.lname }}</h1>
+
   <table>
     <tr>
       <th>_id</th>
@@ -46,9 +50,10 @@
     </tr>
   </table>
 
-  <div>
-    <button routerLink="/employee-edit/{{ employee._id }}">update</button>
-    <button (click)="deleteEmployee(employee._id)">delete</button>
+  <div class="button-display">
+    <button class="button" routerLink="/employee-edit/{{ employee._id }}">update</button>
+    <button class="button"(click)="deleteEmployee(employee._id)">delete</button>
+    <button class="button" routerLink="/employees">Home</button>
   </div>
 </div>
-<button routerLink="/employees">Home</button>
+</div>
