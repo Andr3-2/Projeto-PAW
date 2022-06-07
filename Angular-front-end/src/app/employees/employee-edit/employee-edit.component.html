@@ -66,15 +66,18 @@
       /> </label
     ><br />
     <label
-      >Employee activityState:
-      <input
+      >Status:
+      <select
         [(ngModel)]="employeeData.activityState"
-        placeholder="Employee activityState"
-      /> </label
+        placeholder="Client activityState"
+      >
+        <option value="ACTIVE">Active</option>
+        <option value="NOTACTIVE">not Active</option>
+      </select> </label
     ><br />
   </div>
   <div class="button-display">
-  <button class="button" (click)="updateEmployee()">update</button>
-  <button class="button" routerLink="/employees">Home</button>
-</div>
+    <button class="button" (click)="updateEmployee()">update</button>
+    <button class="button" routerLink="/employees">Home</button>
+  </div>
 </div>
