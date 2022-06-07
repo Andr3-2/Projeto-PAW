@@ -2,6 +2,8 @@ const Employee = require("../models/employee");
 
 var employeeController = {};
 
+var jwt = require("jsonwebtoken");
+var bcrypt = require("bcrypt");
 //## Read Employee, Read Employee, Create Employee, Update Employee, Delete Employee
 
 // mostra todos employees
@@ -33,16 +35,27 @@ employeeController.show = function (req, res, next) {
 // cria 1 employee
 employeeController.create = function (req, res, next) {
   var employee = new Employee(req.body);
-
-  employee.save((err) => {
-    if (err) {
-      console.log("Erro a gravar");
-      next(err);
-    } else {
-      console.log(employee);
-      res.json(employee);
+  employee.password = bcrypt.hashSync(employee.password, 8);
+  employee.save(
+    (err) => {
+      if (err) {
+        console.log("Erro a gravar");
+        next(err);
+      } else {
+        console.log(employee);
+        res.json(employee);
+      }
+    },
+    function (err, user) {
+      if (err)
+        return res.status(500).send("There was a problem registering the user");
+      //register successfuly
+      var token = jwt.sign({ id: user._id }, config.secret, {
+        expiresIn: 86400, //24h
+      });
+      return res.status(200).send({ auth: true, token: token });
     }
-  });
+  );
 };
 
 // edita 1 employee

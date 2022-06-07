@@ -10,16 +10,15 @@
         <th>Tel</th>
         <th>NIF</th>
         <th>Estado</th>
+        <th>Update</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cliente of clientes">
         <td>
-          <a routerLink="/cliente-details/{{ cliente._id }}">{{
-            cliente._id
-          }}</a>
+          <a routerLink="/cliente-details/{{ cliente._id }}">{{ cliente.fname }} {{ cliente.lname }}</a>
         </td>
-        <td>{{ cliente.fname }} {{ cliente.lname }}</td>
         <td>{{ cliente.email }}</td>
         <td>{{ cliente.contact }}</td>
         <td>{{ cliente.NIF }}</td>

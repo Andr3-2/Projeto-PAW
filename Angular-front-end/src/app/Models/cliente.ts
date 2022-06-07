@@ -28,7 +28,6 @@ export class Cliente {
     city: string,
     contact: Number,
     NIF: Number,
-    points: Number,
     activityState: activityStateEnum
   ) {
     this.fname = fname;
@@ -39,7 +38,7 @@ export class Cliente {
     this.city = city;
     this.contact = contact;
     this.NIF = NIF;
-    this.points = points;
+    this.points = 10;
     this.booksSold = new Array();
     this.booksBought = new Array();
     this.activityState = activityState;

@@ -1,3 +1,7 @@
+<div class="container">
+
+  <h1>Book - {{ book.title }}</h1>
+
 <div *ngIf="book" class="books">
   <table>
     <tr>
@@ -46,9 +50,11 @@
     </tr>
   </table>
 
-  <div>
-    <button routerLink="/book-edit/{{ book._id }}">update</button>
-    <button (click)="deleteBook(book._id)">delete</button>
+  <div class="button-display">
+    <button class="button" routerLink="/book-edit/{{ book._id }}">update</button>
+    <button class="button" (click)="deleteBook(book._id)">delete</button>
+    <button class="button" routerLink="/">Home</button>
   </div>
 </div>
-<button routerLink="/">Home</button>
+
+</div>

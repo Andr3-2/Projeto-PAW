@@ -1,38 +1,37 @@
+<div class="container">
 <h1>Books Listing</h1>
 
-<button routerLink="/book-add">Add</button>
+<button class="button" routerLink="/book-add">Add</button>
 
 <table>
   <tr>
-    <th>_id</th>
     <th>title</th>
     <th>category</th>
-    <th>description</th>
     <th>author</th>
     <th>year</th>
     <th>ISBN</th>
-    <th>new_price</th>
-    <th>used_price</th>
-    <th>new_quantity</th>
-    <th>used_quantity</th>
+    <th>New Price</th>
+    <th>Used Price</th>
+    <th>New Quantity</th>
+    <th>Used Quantity</th>
     <th>Update</th>
     <th>Delete</th>
   </tr>
   <tr *ngFor="let book of books">
     <td>
-      <a routerLink="/book-details/{{ book._id }}">{{ book._id }}</a>
+      <a routerLink="/book-details/{{ book._id }}">
+        {{ book.title }}</a>
     </td>
-    <td>{{ book.title }}</td>
     <td>{{ book.category }}</td>
-    <td>{{ book.description }}</td>
     <td>{{ book.author }}</td>
     <td>{{ book.year }}</td>
     <td>{{ book.ISBN }}</td>
-    <td>{{ book.new_price }}</td>
-    <td>{{ book.used_price }}</td>
+    <td>{{ book.new_price }} €</td>
+    <td>{{ book.used_price }} €</td>
     <td>{{ book.new_quantity }}</td>
     <td>{{ book.used_quantity }}</td>
     <td><button routerLink="/book-edit/{{ book._id }}">update</button></td>
     <td><button (click)="deleteBook(book._id)">delete</button></td>
   </tr>
 </table>
+</div>

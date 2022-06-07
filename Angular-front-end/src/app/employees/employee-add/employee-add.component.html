@@ -1,71 +1,82 @@
-<div>
-  <h2>Employee Add</h2>
+<div class="container">
+  <h1>Employee Add</h1>
   <div>
     <label
-      >Employee fname:
+      >First Name:
       <input
         [(ngModel)]="employeeData.fname"
         placeholder="Employee fname"
       /> </label
     ><br />
     <label
-      >Employee lname:
+      >Last Name:
       <input
         [(ngModel)]="employeeData.lname"
         placeholder="Employee lname"
       /> </label
     ><br />
     <label
-      >Employee email:
+      >Email:
       <input
         [(ngModel)]="employeeData.email"
         placeholder="Employee email"
       /> </label
     ><br />
+
     <label
-      >Employee address:
+      >PassWord
+      <input [(ngModel)]="employeeData.password" type="password" placeholder="password" /> </label
+    ><br />
+
+    <label
+      >Address:
       <input
         [(ngModel)]="employeeData.address"
         placeholder="Employee address"
       /> </label
     ><br />
     <label
-      >Employee zipcode:
+      >Zipcode:
       <input
         [(ngModel)]="employeeData.zipcode"
         placeholder="Employee zipcode"
       /> </label
     ><br />
     <label
-      >Employee city:
+      >City:
       <input [(ngModel)]="employeeData.city" placeholder="Employee city" /> </label
     ><br />
     <label
-      >Employee contact:
+      >Contact:
       <input
         [(ngModel)]="employeeData.contact"
         placeholder="Employee contact"
       /> </label
     ><br />
     <label
-      >Employee NIF:
+      >NIF:
       <input [(ngModel)]="employeeData.NIF" placeholder="Employee NIF" /> </label
     ><br />
     <label
-      >Employee salary:
+      >Salary:
       <input type="number"
         [(ngModel)]="employeeData.salary"
         placeholder="Employee salary"
       /> </label
     ><br />
     <label
-      >Employee activityState:
-      <input 
+      >Status:
+      <select
         [(ngModel)]="employeeData.activityState"
-        placeholder="Employee activityState"
-      /> </label
+        placeholder="Client activityState"
+      >
+        <option value="ACTIVE">Active</option>
+        <option value="NOTACTIVE">not Active</option>
+      </select> </label
     ><br />
   </div>
-  <button routerLink="/employees">Home</button>
-  <button (click)="addEmployee()">Save</button>
+  <div class="button-display">
+  <button class="button" routerLink="/employees">Home</button>
+  <button class="button" (click)="addEmployee()">Save</button>
+</div>
 </div>

@@ -8,12 +8,12 @@ var clientSchema = new mongoose.Schema({
   zipcode: String,
   city: String,
   contact: Number,
-  NIF: { type: Number, required: true },
+  NIF: { type: Number },
   points: { type: Number, default: 0 },
   booksSold: Array,
   booksBought: Array,
-  activityState: { type: String, required: true, default: "ACTIVE" },
-  password: String,
+  activityState: { type: String, default: "ACTIVE" },
+  password: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Client", clientSchema);

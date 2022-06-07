@@ -43,7 +43,7 @@ authController.logout = function (req, res) {
 
 authController.register = function (req, res) {
   var client = new Client(req.body);
-  var hashedpassword = bcrypt.hashSync(client.password, 8);
+  client.password = bcrypt.hashSync(client.password, 8);
   client.save(
     (err) => {
       if (err) {
