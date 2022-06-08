@@ -27,12 +27,7 @@ export class LoginComponent implements OnInit {
       alert('Email and Password cant be empty');
       return;
     }
-    this.http
-      .post<any>('http://localhost:3000/api/v1/login', {
-        email,
-        password,
-      })
-      .subscribe((auth: any) => {
+    this.auth.login(email,password).subscribe((auth: any) => {
         if (auth.auth == false) {
           return alert('Authentication Error');
         }
