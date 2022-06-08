@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,26 +29,32 @@ import { TransactionEditComponent } from './transactions/transaction-edit/transa
 
 import { ShoppingCartComponent } from './common/shopping-cart/shopping-cart.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './jwt.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     /*BOOKS COMPONETS*/
     BooksListingComponent,
     BookDetailsComponent,
     BookAddComponent,
     BookEditComponent,
     BooksListingBComponent,
+
     /*CLIENTES COMPONETS*/
     ClientesListingComponent,
     ClienteDetailsComponent,
     ClienteAddComponent,
     ClienteEditComponent,
+
     /*EMPLOYEES COMPONETS*/
     EmployeesListingComponent,
     EmployeeDetailsComponent,
     EmployeeAddComponent,
     EmployeeEditComponent,
+
     /*TRANSACTIONS COMPONETS*/
     TransactionsListingComponent,
     TransactionAddComponent,
@@ -56,9 +62,14 @@ import { MainPageComponent } from './main-page/main-page.component';
     TransactionEditComponent,
     ShoppingCartComponent,
     MainPageComponent,
+    LoginComponent,
+
+    LoginComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent],
 })
+
+
 export class AppModule {}
