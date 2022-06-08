@@ -24,6 +24,7 @@ import { TransactionEditComponent } from './transactions/transaction-edit/transa
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './authGuard.service';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
 
 
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

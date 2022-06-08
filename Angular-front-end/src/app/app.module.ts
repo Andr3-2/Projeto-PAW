@@ -29,8 +29,10 @@ import { TransactionEditComponent } from './transactions/transaction-edit/transa
 
 import { ShoppingCartComponent } from './common/shopping-cart/shopping-cart.component';
 import { MainPageComponent } from './main-page/main-page.component';
+
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './jwt.interceptor';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     MainPageComponent,
     LoginComponent,
 
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

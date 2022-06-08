@@ -7,6 +7,7 @@ enum activityStateEnum{
 export class Cliente {
   _id!: string;
   fname: string;
+  password: string;
   lname: string;
   email: string;
   address: string;
@@ -18,10 +19,12 @@ export class Cliente {
   booksSold: Array<Book>;
   booksBought: Array<Book>;
   activityState: activityStateEnum;
+  static activityStateEnum: any;
 
   public constructor(
     fname: string,
     lname: string,
+    password: string,
     email: string,
     address: string,
     zipcode: string,
@@ -32,6 +35,7 @@ export class Cliente {
   ) {
     this.fname = fname;
     this.lname = lname;
+    this.password = password;
     this.email = email;
     this.address = address;
     this.zipcode = zipcode;
