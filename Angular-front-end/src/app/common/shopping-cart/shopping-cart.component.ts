@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../../Models/book';
 
 
@@ -11,7 +12,11 @@ import { Book } from '../../Models/book';
 export class ShoppingCartComponent implements OnInit {
   cart: Book[] = [];
 
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.shoppingCartService.cart.subscribe(
@@ -35,5 +40,10 @@ export class ShoppingCartComponent implements OnInit {
 
   clearCart() {
     this.shoppingCartService.clearCart();
+  }
+
+  makePurchase() {
+    //provavelmente é melhor passar a info de outra forma (precisa ser de uma forma imutável)
+    this.router.navigate(['/payment', JSON.stringify(this.cart)]);
   }
 }
