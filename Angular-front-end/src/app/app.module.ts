@@ -29,6 +29,7 @@ import { TransactionEditComponent } from './transactions/transaction-edit/transa
 
 import { ShoppingCartComponent } from './common/shopping-cart/shopping-cart.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +55,10 @@ import { MainPageComponent } from './main-page/main-page.component';
     TransactionAddComponent,
     TransactionDetailsComponent,
     TransactionEditComponent,
+    /*Stuff*/
     ShoppingCartComponent,
     MainPageComponent,
+    PaymentPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
