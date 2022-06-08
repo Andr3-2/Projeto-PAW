@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="button-display">
+    <h1>Register</h1>
+    <label
+      >First Name:
+      <input
+        [(ngModel)]="clienteData.fname"
+        placeholder="Client fname"
+      /> </label
+    ><br />
+    <label
+      >PassWord
+      <input
+        [(ngModel)]="clienteData.password"
+        type="password"
+        placeholder="password"
+      /> </label
+    ><br />
+
+    <label
+      >Last Name:
+      <input
+        [(ngModel)]="clienteData.lname"
+        placeholder="Client lname"
+      /> </label
+    ><br />
+    <label
+      >Email:
+      <input
+        [(ngModel)]="clienteData.email"
+        placeholder="Client email"
+      /> </label
+    ><br />
+    <div class="button-display">
+      <button class="button" (click)="register()">Register</button>
+    </div>
+  </div>
+</div>

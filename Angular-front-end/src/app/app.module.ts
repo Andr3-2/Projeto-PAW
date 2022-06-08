@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,25 +31,33 @@ import { ShoppingCartComponent } from './common/shopping-cart/shopping-cart.comp
 import { MainPageComponent } from './main-page/main-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptor } from './jwt.interceptor';
+import { RegisterComponent } from './register/register.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+
     /*BOOKS COMPONETS*/
     BooksListingComponent,
     BookDetailsComponent,
     BookAddComponent,
     BookEditComponent,
     BooksListingBComponent,
+
     /*CLIENTES COMPONETS*/
     ClientesListingComponent,
     ClienteDetailsComponent,
     ClienteAddComponent,
     ClienteEditComponent,
+
     /*EMPLOYEES COMPONETS*/
     EmployeesListingComponent,
     EmployeeDetailsComponent,
     EmployeeAddComponent,
     EmployeeEditComponent,
+
     /*TRANSACTIONS COMPONETS*/
     TransactionsListingComponent,
     TransactionAddComponent,
@@ -58,10 +66,16 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
     /*Stuff*/
     ShoppingCartComponent,
     MainPageComponent,
-    PaymentPageComponent,
+    LoginComponent,
+
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent],
 })
+
+
 export class AppModule {}

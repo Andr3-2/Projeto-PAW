@@ -22,7 +22,9 @@ import { TransactionAddComponent } from './transactions/transaction-add/transact
 import { TransactionEditComponent } from './transactions/transaction-edit/transaction-edit.component';
 
 import { MainPageComponent } from './main-page/main-page.component';
-import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './authGuard.service';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -31,25 +33,29 @@ const routes: Routes = [
   { path: 'main', component: MainPageComponent },
   { path: 'payment/:cart', component: PaymentPageComponent },
 
-  { path: 'books', component: BooksListingComponent },
-  { path: 'book-details/:id', component: BookDetailsComponent },
-  { path: 'book-add', component: BookAddComponent },
-  { path: 'book-edit/:id', component: BookEditComponent },
+  { path: 'books', component: BooksListingComponent, canActivate: [AuthGuard]},
+  { path: 'book-details/:id', component: BookDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'book-add', component: BookAddComponent , canActivate: [AuthGuard]},
+  { path: 'book-edit/:id', component: BookEditComponent , canActivate: [AuthGuard]},
 
-  { path: 'clientes', component: ClientesListingComponent },
-  { path: 'cliente-details/:id', component: ClienteDetailsComponent },
-  { path: 'cliente-add', component: ClienteAddComponent },
-  { path: 'cliente-edit/:id', component: ClienteEditComponent },
+  { path: 'clientes', component: ClientesListingComponent , canActivate: [AuthGuard]},
+  { path: 'cliente-details/:id', component: ClienteDetailsComponent , canActivate: [AuthGuard]},
+  { path: 'cliente-add', component: ClienteAddComponent, canActivate: [AuthGuard] },
+  { path: 'cliente-edit/:id', component: ClienteEditComponent , canActivate: [AuthGuard]},
 
-  { path: 'employees', component: EmployeesListingComponent },
-  { path: 'employee-details/:id', component: EmployeeDetailsComponent },
-  { path: 'employee-add', component: EmployeeAddComponent },
-  { path: 'employee-edit/:id', component: EmployeeEditComponent },
+  { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard] },
+  { path: 'employee-details/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'employee-add', component: EmployeeAddComponent , canActivate: [AuthGuard]},
+  { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard] },
 
-  { path: 'transactions', component: TransactionsListingComponent },
-  { path: 'transaction-details/:id', component: TransactionDetailsComponent },
-  { path: 'transaction-add', component: TransactionAddComponent },
-  { path: 'transaction-edit/:id', component: TransactionEditComponent },
+  { path: 'transactions', component: TransactionsListingComponent, canActivate: [AuthGuard] },
+  { path: 'transaction-details/:id', component: TransactionDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard] },
+  { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard]},
+
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

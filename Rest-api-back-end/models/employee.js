@@ -11,6 +11,7 @@ var employeeSchema = new mongoose.Schema({
   NIF: { type: Number, required: true },
   salary: Number,
   activityState: { type: String, default: "Active" },
+  password:{ type: String, required: true }
 });
 
 module.exports = mongoose.model("Employee", employeeSchema);
