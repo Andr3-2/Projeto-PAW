@@ -8,18 +8,17 @@ import { Cliente } from '../Models/cliente';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http
-      .post<any>('http://localhost:3000/api/v1/login', {
-        email,
-        password,
-      })
-    }
+    return this.http.post<any>('http://localhost:3000/api/v1/login', {
+      email,
+      password,
+    });
+  }
 
   logout() {
-    if(JSON.parse(localStorage.getItem('currentUser')!).auth == false){
+    if (JSON.parse(localStorage.getItem('currentUser')!).auth == false) {
       alert('Not Logged in');
       return;
     }
@@ -28,8 +27,11 @@ export class AuthenticationService {
     this.router.navigate(['/']);
   }
 
-  register(cliente:Cliente){
-    return this.http
-      .post<any>('http://localhost:3000/api/v1/rgister', cliente)
+  register(cliente: Cliente) {
+    console.log(cliente);
+    return this.http.post<any>(
+      'http://localhost:3000/api/v1/register',
+      JSON.stringify(cliente)
+    );
   }
 }
