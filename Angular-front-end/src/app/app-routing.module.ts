@@ -30,8 +30,8 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
-
   { path: 'main', component: MainPageComponent },
+  { path: 'payment/:cart', component: PaymentPageComponent },
 
   { path: 'books', component: BooksListingComponent, canActivate: [AuthGuard]},
   { path: 'book-details/:id', component: BookDetailsComponent, canActivate: [AuthGuard] },
