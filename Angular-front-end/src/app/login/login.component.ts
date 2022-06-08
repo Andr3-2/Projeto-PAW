@@ -32,8 +32,13 @@ export class LoginComponent implements OnInit {
         email,
         password,
       })
-      .subscribe((res) => {
-        console.log(res);
+      .subscribe((auth: any) => {
+        if (auth.auth == false) {
+          return alert('Authentication Error');
+        }
+        localStorage.setItem('currentUser',JSON.stringify(auth));
+        this.router.navigate(['/']);
+        console.log(auth);
       });
   }
 }

@@ -32,7 +32,7 @@ const routes: Routes = [
 
   { path: 'main', component: MainPageComponent },
 
-  { path: 'books', component: BooksListingComponent},
+  { path: 'books', component: BooksListingComponent, canActivate: [AuthGuard]},
   { path: 'book-details/:id', component: BookDetailsComponent, canActivate: [AuthGuard] },
   { path: 'book-add', component: BookAddComponent , canActivate: [AuthGuard]},
   { path: 'book-edit/:id', component: BookEditComponent , canActivate: [AuthGuard]},
