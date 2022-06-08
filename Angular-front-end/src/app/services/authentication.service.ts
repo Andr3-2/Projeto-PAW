@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -6,15 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  endpoint = 'http://localhost:3000/api/v1/';
-
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.endpoint + 'login', { email, password });
-  }
+    console.log(email + '|||' + password);
+    return this.http
+      .post<any>('http://localhost:3000/api/v1/books', {
+        email,
+        password,
+      })
+    }
 
-  logout(){
-    localStorage.removeItem('currentUser')
+  logout() {
+    localStorage.removeItem('currentUser');
   }
 }

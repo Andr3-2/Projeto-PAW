@@ -67,7 +67,8 @@ import { JwtInterceptor } from './jwt.interceptor';
     LoginComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent],
 })
 

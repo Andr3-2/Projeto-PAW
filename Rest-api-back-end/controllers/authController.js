@@ -6,11 +6,27 @@ var authController = {};
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcrypt");
 var config = require("../authconfig");
+const { decode } = require("jsonwebtoken");
 
 authController.login = function (req, res) {
   Employee.findOne({ email: req.body.email }, function (err, user) {
     if (err) return res.status(500).send("Server Error");
-    if (!user) return;
+    if (!user) {
+      Client.findOne({ email: req.body.email }, function (err, user) {
+        if (err) return res.status(500).send("Server Error");
+        if (!user) return res.status(404).send("No User Found");
+        //check if password valid
+        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        if (!passwordIsValid)
+          return res.status(401).send({ auth: false, token: null });
+        //if password valid
+        var token = jwt.sign({ id: user._id }, config.secret, {
+          expiresIn: 86400, //24h
+        });
+        console.log('------------Logged In(Client)------------');
+        return res.status(200).send({ auth: true, token: token });
+      });
+    }
     //check if password valid
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid)
@@ -19,20 +35,7 @@ authController.login = function (req, res) {
     var token = jwt.sign({ id: user._id }, config.secret, {
       expiresIn: 86400, //24h
     });
-    return res.status(200).send({ auth: true, token: token });
-  });
-
-  Client.findOne({ email: req.body.email }, function (err, user) {
-    if (err) return res.status(500).send("Server Error");
-    if (!user) return res.status(404).send("No User Found");
-    //check if password valid
-    var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-    if (!passwordIsValid)
-      return res.status(401).send({ auth: false, token: null });
-    //if password valid
-    var token = jwt.sign({ id: user._id }, config.secret, {
-      expiresIn: 86400, //24h
-    });
+    console.log('------------Logged In(Employee)------------');
     return res.status(200).send({ auth: true, token: token });
   });
 };
@@ -80,4 +83,22 @@ authController.profile = function (req, res) {
   });
 };
 
+authController.verifyToken = function (req,res,next){
+
+  var token = req.headers['x-acces-token'];
+  if(!token) return res.status(403).send({auth: false,message: 'no token provided.'});
+  jwt.verify(token,config.secret, function(err,decoded){
+    if(err) res.status(500).send({auth: false,message: 'failed to autenticate token'});
+    req.userId =decoded.id;
+    next();
+  })
+}
+
+authController.verifyRoleAdmin = function (req,res,next){
+  Employee.findById(req.userId, function (err, user) {
+    if(err) return res.status(500).send("There was a problem finding the blues");
+    if(!user) return res.status(401).send("No user found.");
+    next();
+  })
+}
 module.exports = authController;
