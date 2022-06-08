@@ -1,0 +1,9 @@
+Stuff in the Cart
+
+<div *ngIf="cart.length > 0">
+  <h1>ShoppingCart</h1>
+  <div *ngFor="let book of cart; index as i">
+    <span>{{ book._id }}</span>
+  </div>
+</div>
+<button routerLink="/">Home</button>

@@ -22,13 +22,14 @@ import { TransactionAddComponent } from './transactions/transaction-add/transact
 import { TransactionEditComponent } from './transactions/transaction-edit/transaction-edit.component';
 
 import { MainPageComponent } from './main-page/main-page.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
-
   { path: 'main', component: MainPageComponent },
+  { path: 'payment/:cart', component: PaymentPageComponent },
 
   { path: 'books', component: BooksListingComponent },
   { path: 'book-details/:id', component: BookDetailsComponent },
