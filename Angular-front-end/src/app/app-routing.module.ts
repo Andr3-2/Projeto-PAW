@@ -49,10 +49,10 @@ const routes: Routes = [
   { path: 'employee-add', component: EmployeeAddComponent , canActivate: [AuthGuard]},
   { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard] },
 
-  { path: 'transactions', component: TransactionsListingComponent, canActivate: [AuthGuard] },
-  { path: 'transaction-details/:id', component: TransactionDetailsComponent, canActivate: [AuthGuard]},
-  { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard] },
-  { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard]},
+  { path: 'transactions', component: TransactionsListingComponent, /*canActivate: [AuthGuard] */},
+  { path: 'transaction-details/:id', component: TransactionDetailsComponent, /*canActivate: [AuthGuard]*/},
+  { path: 'transaction-add', component: TransactionAddComponent, /*canActivate: [AuthGuard]*/ },
+  { path: 'transaction-edit/:id', component: TransactionEditComponent , /*canActivate: [AuthGuard]*/},
 
 
   { path: 'login', component: LoginComponent },

@@ -33,6 +33,7 @@ transactionController.show = function (req, res, next) {
 // cria 1 transaction
 transactionController.create = function (req, res, next) {
   var transaction = new Transaction(req.body);
+  console.log(req.body);
 
   transaction.save((err) => {
     if (err) {

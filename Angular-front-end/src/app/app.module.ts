@@ -34,6 +34,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { RegisterComponent } from './register/register.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -66,12 +67,12 @@ import { RegisterComponent } from './register/register.component';
     /*Stuff*/
     ShoppingCartComponent,
     MainPageComponent,
-    LoginComponent,
-
+    PaymentPageComponent,
+    
     LoginComponent,
     RegisterComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent],
