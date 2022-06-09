@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(email: string, password: string): void {
-    if (email === '' || password === '') {
+    if (email == '' || password == '') {
       alert('Email and Password cant be empty');
       return;
     }

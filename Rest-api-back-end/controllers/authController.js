@@ -9,6 +9,7 @@ var config = require("../authconfig");
 const { decode } = require("jsonwebtoken");
 
 authController.login = function (req, res) {
+  logged = false;
   Employee.findOne({ email: req.body.email }, function (err, user) {
     if (err) return res.status(500).send("Server Error");
     if (!user) {
@@ -29,7 +30,8 @@ authController.login = function (req, res) {
         console.log("------------Logged In(Client)------------");
         return res.status(200).send({ auth: true, token: token });
       });
-    }
+      return;
+    };
     //check if password valid
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid)
@@ -39,6 +41,7 @@ authController.login = function (req, res) {
       expiresIn: 86400, //24h
     });
     console.log("------------Logged In(Employee)------------");
+    logged = true;
     return res.status(200).send({ auth: true, token: token });
   });
 };
@@ -50,13 +53,14 @@ authController.logout = function (req, res) {
 authController.register = function (req, res) {
   var client = new Client(req.body);
   client.password = bcrypt.hashSync(client.password, 8);
-    client.save(function (err, user) {
-      if (err) return res.status(500).send("There was a problem registering the user");
-      var token = jwt.sign({ id: user._id }, config.secret, {
-        expiresIn: 86400, //24h
-      });
-      return res.status(200).send({ auth: true, token: token });
+  client.save(function (err, user) {
+    if (err)
+      return res.status(500).send("There was a problem registering the user");
+    var token = jwt.sign({ id: user._id }, config.secret, {
+      expiresIn: 86400, //24h
     });
+    return res.status(200).send({ auth: true, token: token });
+  });
 };
 
 authController.profile = function (req, res) {

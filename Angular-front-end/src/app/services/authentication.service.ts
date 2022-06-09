@@ -12,8 +12,8 @@ export class AuthenticationService {
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>('http://localhost:3000/api/v1/login', {
-      email: email,
-      password: password,
+      email,
+      password,
     });
   }
 

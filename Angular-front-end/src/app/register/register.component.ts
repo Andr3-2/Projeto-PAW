@@ -49,10 +49,15 @@ export class RegisterComponent implements OnInit {
       alert('Empty inputs');
       return;
     }
-    this.auth.register(fname, lname, email, password).subscribe(data => {
-      if (data.auth == true) {
-        this.router.navigate(['/']);
-      }
-    });
+    try {
+      this.auth.register(fname, lname, email, password).subscribe((data) => {
+        if (data.auth == true) {
+          this.router.navigate(['/']);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+      alert("Register error");
+    }
   }
 }
