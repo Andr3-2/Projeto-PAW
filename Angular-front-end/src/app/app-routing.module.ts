@@ -22,6 +22,7 @@ import { TransactionAddComponent } from './transactions/transaction-add/transact
 import { TransactionEditComponent } from './transactions/transaction-edit/transaction-edit.component';
 
 import { MainPageComponent } from './main-page/main-page.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './authGuard.service';
 import { RegisterComponent } from './register/register.component';
