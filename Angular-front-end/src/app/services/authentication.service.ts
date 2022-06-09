@@ -18,13 +18,13 @@ export class AuthenticationService {
   }
 
   logout() {
-    if (JSON.parse(localStorage.getItem('currentUser')!).auth == false) {
+    if (!localStorage.getItem('currentUser')) {
       alert('Not Logged in');
       return;
     }
     localStorage.removeItem('currentUser');
     alert('Loged Out');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
   register(

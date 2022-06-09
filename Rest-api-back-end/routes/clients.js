@@ -1,4 +1,5 @@
 var clientController = require("../controllers/clientController");
+var authController = require("../controllers/authController");
 var express = require("express");
 var router = express.Router();
 
@@ -9,9 +10,9 @@ router.get("/", function (req, res, next) {
 
 router.get("/show", clientController.showAll);
 router.get("/show/:id", clientController.show);
-router.post("/create", clientController.create);
-router.put("/edit", clientController.edit);
-router.delete("/delete/:id", clientController.delete);
+router.post("/create",clientController.create);
+router.put("/edit",clientController.edit);
+router.delete("/delete/:id",authController.verifyRoleAdmin, clientController.delete);
 
 //router.post("/search",clientController.search);
 

@@ -99,4 +99,5 @@ authController.verifyRoleAdmin = function (req, res, next) {
     next();
   });
 };
+
 module.exports = authController;
