@@ -23,16 +23,18 @@ export class AuthenticationService {
       return;
     }
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('role');
     alert('Loged Out');
     this.router.navigate(['/login']);
   }
 
-  register(
-    fname: string,
-    lname: string,
-    email: string,
-    password: string
-  ) {
+  role(email: string) {
+    return this.http.post<any>('http://localhost:3000/api/v1/role', {
+      email,
+    });
+  }
+
+  register(fname: string, lname: string, email: string, password: string) {
     return this.http.post<any>('http://localhost:3000/api/v1/register', {
       fname: fname,
       lname: lname,

@@ -34,6 +34,7 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { RegisterComponent } from './register/register.component';
+import { RoleGuard } from './roleGuard.guard';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
 
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

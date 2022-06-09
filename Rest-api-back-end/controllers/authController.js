@@ -8,6 +8,21 @@ var bcrypt = require("bcrypt");
 var config = require("../authconfig");
 const { decode } = require("jsonwebtoken");
 
+authController.role = function (req, res) {
+  Employee.findOne({ email: req.body.email }, function (err, user) {
+    if (err) return res.status(500).send("Server Error");
+    if (!user) {
+      Client.findOne({ email: req.body.email }, function (err, user) {
+        if (err) return res.status(500).send("Server Error");
+        if (!user) return res.status(404).send("No User Found");
+        return res.status(200).send({ role: "user" });
+      });
+      return;
+    }
+    return res.status(200).send({ role: "admin" });
+  });
+};
+
 authController.login = function (req, res) {
   logged = false;
   Employee.findOne({ email: req.body.email }, function (err, user) {
@@ -31,7 +46,7 @@ authController.login = function (req, res) {
         return res.status(200).send({ auth: true, token: token });
       });
       return;
-    };
+    }
     //check if password valid
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid)

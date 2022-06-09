@@ -1,13 +1,11 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-var authController = require('../controllers/authController');
-var clientController = require('../controllers/clientController');
+var authController = require("../controllers/authController");
 
-router.post('/login',authController.login);
-router.post('/register',authController.register);
-router.get('/logout',authController.logout);
-router.get('/profile',authController.profile);
-
-router.get('/all-users',authController.verifyToken,authController.verifyRoleAdmin,clientController.show);
+router.post("/login", authController.login);
+router.post("/role", authController.role);
+router.post("/register", authController.register);
+router.get("/logout", authController.logout);
+router.get("/profile", authController.profile);
 
 module.exports = router;

@@ -23,7 +23,7 @@ import { TransactionEditComponent } from './transactions/transaction-edit/transa
 
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './authGuard.service';
+import { AuthGuard } from './authGuard.guard';
 import { RegisterComponent } from './register/register.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { RoleGuard } from './roleGuard.guard';
@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'cliente-edit/:id', component: ClienteEditComponent , canActivate: [AuthGuard]},
 
   { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard,RoleGuard], data:{
-    expectedRoles:['Admin']
+    role:['admin']
   } },
   { path: 'employee-details/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard] },
   { path: 'employee-add', component: EmployeeAddComponent , canActivate: [AuthGuard]},
