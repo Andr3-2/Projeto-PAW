@@ -12,8 +12,8 @@ export class AuthenticationService {
 
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>('http://localhost:3000/api/v1/login', {
-      email,
-      password,
+      email: email,
+      password: password,
     });
   }
 
@@ -27,11 +27,17 @@ export class AuthenticationService {
     this.router.navigate(['/']);
   }
 
-  register(cliente: Cliente) {
-    console.log(cliente);
-    return this.http.post<any>(
-      'http://localhost:3000/api/v1/register',
-      JSON.stringify(cliente)
-    );
+  register(
+    fname: string,
+    lname: string,
+    email: string,
+    password: string
+  ) {
+    return this.http.post<any>('http://localhost:3000/api/v1/register', {
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password,
+    });
   }
 }

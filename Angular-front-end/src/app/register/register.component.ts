@@ -39,11 +39,20 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  register(): void {
-    this.http.post<any>(
-      'http://localhost:3000/api/v1/register',
-      this.clienteData
-    );
-    this.router.navigate(['/login']);
+  register(
+    fname: string,
+    lname: string,
+    email: string,
+    password: string
+  ): void {
+    if (fname === '' || lname === '' || email === '' || password === '') {
+      alert('Empty inputs');
+      return;
+    }
+    this.auth.register(fname, lname, email, password).subscribe(data => {
+      if (data.auth == true) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

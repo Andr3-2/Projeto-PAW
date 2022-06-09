@@ -25,6 +25,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './authGuard.service';
 import { RegisterComponent } from './register/register.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
 
 
 const routes: Routes = [

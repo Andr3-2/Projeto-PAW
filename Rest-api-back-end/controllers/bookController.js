@@ -11,7 +11,7 @@ bookController.showAll = function (req, res, next) {
       console.log("Erro a ler");
       next(err);
     } else {
-      console.log(dbBooks);
+      //console.log(dbBooks);
       res.json(dbBooks);
     }
   });
@@ -24,7 +24,7 @@ bookController.show = function (req, res, next) {
       console.log("Erro a ler");
       next(err);
     } else {
-      console.log(dbBook);
+      //console.log(dbBook);
       res.json(dbBook);
     }
   });
@@ -39,7 +39,7 @@ bookController.create = function (req, res, next) {
       console.log("Erro a gravar");
       next(err);
     } else {
-      console.log(book);
+      //console.log(book);
       res.json(book);
     }
   });
@@ -52,7 +52,7 @@ bookController.edit = function (req, res, next) {
       console.log("Erro a gravar");
       next(err);
     } else {
-      console.log(editedBook);
+      //console.log(editedBook);
       res.json(editedBook);
     }
   });
@@ -64,7 +64,7 @@ bookController.delete = function (req, res, next) {
     if (err) {
       next(err);
     } else {
-      console.log(deletedBook);
+      //console.log(deletedBook);
       res.json(deletedBook);
     }
   });
