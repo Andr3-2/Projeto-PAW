@@ -1,18 +1,9 @@
 <div class="container">
-    <h1>Update</h1>
+  <h1>Update</h1>
   <label
     >First Name:
     <input [(ngModel)]="clienteData.fname" placeholder="Client fname" /> </label
   ><br />
-  <label
-    >PassWord
-    <input
-      [(ngModel)]="clienteData.password"
-      type="password"
-      placeholder="password"
-    /> </label
-  ><br />
-
   <label
     >Last Name:
     <input [(ngModel)]="clienteData.lname" placeholder="Client lname" /> </label
@@ -66,8 +57,7 @@
     </select> </label
   ><br />
   <div class="button-display">
-  <button class="button" (click)="updateCliente()">Update</button>
-  <button class="button" routerLink="/clientes">Home</button>
+    <button class="button" (click)="updateCliente()">Update</button>
+    <button class="button" routerLink="/clientes">Home</button>
+  </div>
 </div>
-</div>
-

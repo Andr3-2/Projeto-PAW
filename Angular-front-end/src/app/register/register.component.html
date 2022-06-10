@@ -5,7 +5,21 @@
       >First Name:
       <input
         [(ngModel)]="clienteData.fname"
-        placeholder="Client fname"
+        placeholder="First Name"
+      /> </label
+    ><br />
+    <label
+      >Last Name:
+      <input
+        [(ngModel)]="clienteData.lname"
+        placeholder="Last Name"
+      /> </label
+    ><br />
+    <label
+      >Email:
+      <input
+        [(ngModel)]="clienteData.email"
+        placeholder="Email"
       /> </label
     ><br />
     <label
@@ -13,26 +27,15 @@
       <input
         [(ngModel)]="clienteData.password"
         type="password"
-        placeholder="password"
-      /> </label
-    ><br />
-
-    <label
-      >Last Name:
-      <input
-        [(ngModel)]="clienteData.lname"
-        placeholder="Client lname"
-      /> </label
-    ><br />
-    <label
-      >Email:
-      <input
-        [(ngModel)]="clienteData.email"
-        placeholder="Client email"
+        placeholder="PassWord"
       /> </label
     ><br />
     <div class="button-display">
-      <button class="button" (click)="register()">Register</button>
+      <button class="button" (click)="register(
+        clienteData.fname,
+        clienteData.lname,
+        clienteData.email,
+        clienteData.password)">Register</button>
     </div>
   </div>
 </div>
