@@ -26,7 +26,6 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './authGuard.guard';
 import { RegisterComponent } from './register/register.component';
-import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { RoleGuard } from './roleGuard.guard';
 
 
