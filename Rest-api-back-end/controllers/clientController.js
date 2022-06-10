@@ -11,7 +11,7 @@ clientController.showAll = function (req, res, next) {
       console.log("Erro a ler");
       next(err);
     } else {
-      console.log(dbClients);
+      //console.log(dbClients);
       res.json(dbClients);
     }
   });
@@ -24,7 +24,7 @@ clientController.show = function (req, res, next) {
       console.log("Erro a ler");
       next(err);
     } else {
-      console.log(dbClient);
+      //console.log(dbClient);
       res.json(dbClient);
     }
   });
@@ -39,7 +39,7 @@ clientController.create = function (req, res, next) {
       console.log("Erro a gravar");
       next(err);
     } else {
-      console.log(client);
+      //console.log(client);
       res.json(client);
     }
   });
@@ -52,7 +52,7 @@ clientController.edit = function (req, res, next) {
       console.log("Erro a gravar");
       next(err);
     } else {
-      console.log(editedClient);
+      //console.log(editedClient);
       res.json(editedClient);
     }
   });
@@ -64,7 +64,7 @@ clientController.delete = function (req, res, next) {
     if (err) {
       next(err);
     } else {
-      console.log(deletedClient);
+      //console.log(deletedClient);
       res.json(deletedClient);
     }
   });

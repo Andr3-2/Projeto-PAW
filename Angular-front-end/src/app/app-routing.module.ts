@@ -24,8 +24,10 @@ import { TransactionEditComponent } from './transactions/transaction-edit/transa
 import { MainPageComponent } from './main-page/main-page.component';
 import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './authGuard.service';
+import { AuthGuard } from './authGuard.guard';
 import { RegisterComponent } from './register/register.component';
+import { PaymentPageComponent } from './payment-page/payment-page.component';
+import { RoleGuard } from './roleGuard.guard';
 
 
 const routes: Routes = [
@@ -44,15 +46,17 @@ const routes: Routes = [
   { path: 'cliente-add', component: ClienteAddComponent, canActivate: [AuthGuard] },
   { path: 'cliente-edit/:id', component: ClienteEditComponent , canActivate: [AuthGuard]},
 
-  { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard,RoleGuard], data:{
+    role:['admin']
+  } },
   { path: 'employee-details/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard] },
   { path: 'employee-add', component: EmployeeAddComponent , canActivate: [AuthGuard]},
   { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard] },
 
-  { path: 'transactions', component: TransactionsListingComponent, /*canActivate: [AuthGuard] */},
-  { path: 'transaction-details/:id', component: TransactionDetailsComponent, /*canActivate: [AuthGuard]*/},
-  { path: 'transaction-add', component: TransactionAddComponent, /*canActivate: [AuthGuard]*/ },
-  { path: 'transaction-edit/:id', component: TransactionEditComponent , /*canActivate: [AuthGuard]*/},
+  { path: 'transactions', component: TransactionsListingComponent, canActivate: [AuthGuard]},
+  { path: 'transaction-details/:id', component: TransactionDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard] },
+  { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard]},
 
 
   { path: 'login', component: LoginComponent },

@@ -8,28 +8,38 @@ import { Cliente } from '../Models/cliente';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
-    return this.http
-      .post<any>('http://localhost:3000/api/v1/login', {
-        email,
-        password,
-      })
-    }
+    return this.http.post<any>('http://localhost:3000/api/v1/login', {
+      email,
+      password,
+    });
+  }
 
   logout() {
-    if(JSON.parse(localStorage.getItem('currentUser')!).auth == false){
+    if (!localStorage.getItem('currentUser')) {
       alert('Not Logged in');
       return;
     }
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('role');
     alert('Loged Out');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
-  register(cliente:Cliente){
-    return this.http
-      .post<any>('http://localhost:3000/api/v1/rgister', cliente)
+  role(email: string) {
+    return this.http.post<any>('http://localhost:3000/api/v1/role', {
+      email,
+    });
+  }
+
+  register(fname: string, lname: string, email: string, password: string) {
+    return this.http.post<any>('http://localhost:3000/api/v1/register', {
+      fname: fname,
+      lname: lname,
+      email: email,
+      password: password,
+    });
   }
 }

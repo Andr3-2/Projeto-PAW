@@ -14,6 +14,29 @@ h1 {
   font-weight: bold;
 }
 
+.topbutton{
+  transition-duration: 0.4s;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: solid 3px green;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.topbutton:hover{
+  transition-duration: 0.4s;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: solid 3px green;
+  border-radius: 6px;
+  margin-right: 10px;
+  background-color: rgb(160, 221, 160);
+}
+
+.banner{
+  width: 100%;
+}
+
 .button {
   transition-duration: 0.4s;
   padding: 10px 24px;

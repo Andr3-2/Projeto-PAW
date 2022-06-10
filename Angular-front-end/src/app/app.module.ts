@@ -70,7 +70,7 @@ import { CommonModule } from '@angular/common';
     PaymentPageComponent,
     
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

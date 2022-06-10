@@ -1,10 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from '../Models/cliente';
 import { AuthenticationService } from '../services/authentication.service';
 
-enum activityStateEnum{
-  ACTIVE,NOTACTIVE
+enum activityStateEnum {
+  ACTIVE,
+  NOTACTIVE,
 }
 
 @Component({
@@ -12,9 +14,7 @@ enum activityStateEnum{
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-
 export class RegisterComponent implements OnInit {
-  
   @Input() clienteData: Cliente = {
     _id: '',
     fname: '',
@@ -29,15 +29,35 @@ export class RegisterComponent implements OnInit {
     points: 0,
     booksSold: [],
     booksBought: [],
-    activityState: activityStateEnum.ACTIVE
+    activityState: activityStateEnum.ACTIVE,
   };
-  constructor(private auth: AuthenticationService,
-    private router:Router) {}
+  constructor(
+    private auth: AuthenticationService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {}
 
-  register(): void {
-    this.auth.register(this.clienteData);
-    this.router.navigate(['/login']);
+  register(
+    fname: string,
+    lname: string,
+    email: string,
+    password: string
+  ): void {
+    if (fname === '' || lname === '' || email === '' || password === '') {
+      alert('Empty inputs');
+      return;
+    }
+    try {
+      this.auth.register(fname, lname, email, password).subscribe((data) => {
+        if (data.auth == true) {
+          this.router.navigate(['/']);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+      alert("Register error");
+    }
   }
 }
