@@ -10,7 +10,7 @@ export class Transaction {
   public constructor(
     public sender: any,
     public receiver: any,
-    public books: Array<Book>,
+    public books: [Book],
     public totalPrice: number
   ) {
     if (

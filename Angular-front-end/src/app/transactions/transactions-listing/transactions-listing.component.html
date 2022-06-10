@@ -1,1 +1,36 @@
-<p>transactions-listing works!</p>
+<div class="container">
+  <h1>Transactions Listing</h1>
+
+  <button class="button" routerLink="/transaction-add">Add</button>
+
+  <table>
+    <tr>
+      <th>index</th>
+      <th>date</th>
+      <th>sender</th>
+      <th>receiver</th>
+      <th>books</th>
+      <th>totalPrice</th>
+    </tr>
+
+    <tr *ngFor="let transaction of transactions; index as i">
+      <td>
+        <a routerLink="/transaction-details/{{ transaction._id }}"> {{i}}</a>
+      </td>
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.sender }}</td>
+      <td>{{ transaction.receiver }}</td>
+      <td>{{ transaction.books }} €</td>
+      <td>{{ transaction.totalPrice }} €</td>
+
+      <td>
+        <button routerLink="/transaction-edit/{{ transaction._id }}">
+          update
+        </button>
+      </td>
+      <td>
+        <button (click)="deleteTransaction(transaction._id)">delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -6,4 +6,14 @@ Stuff in the Cart
     <span>{{ book._id }}</span>
   </div>
 </div>
+
+
+<app-transaction-add
+[sender] = employee
+[receiver]= cliente
+[books] = cart
+[totalPrice] = totalPrice
+></app-transaction-add>
+
+
 <button routerLink="/">Home</button>
