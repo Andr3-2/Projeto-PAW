@@ -9,10 +9,10 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/show",/*authController.verifyRoleAdmin,*/ employeeController.showAll);
-router.get("/show/:id",/*authController.verifyRoleAdmin,*/ employeeController.show);
-router.post("/create",/*authController.verifyRoleAdmin,*/ employeeController.create);
-router.put("/edit/:id",/*authController.verifyRoleAdmin,*/ employeeController.edit);
-router.delete("/delete/:id",/*authController.verifyRoleAdmin,*/ employeeController.delete);
+router.get("/show/:id",authController.verifyRoleAdmin, employeeController.show);
+router.post("/create",authController.verifyRoleAdmin, employeeController.create);
+router.put("/edit",authController.verifyRoleAdmin, employeeController.edit);
+router.delete("/delete/:id",authController.verifyRoleAdmin, employeeController.delete);
 
 //router.post("/search",employeeController.search);
 

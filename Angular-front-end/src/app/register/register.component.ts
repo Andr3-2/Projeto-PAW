@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from '../Models/cliente';
@@ -14,7 +13,7 @@ enum activityStateEnum {
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   @Input() clienteData: Cliente = {
     _id: '',
     fname: '',
@@ -34,10 +33,9 @@ export class RegisterComponent implements OnInit {
   constructor(
     private auth: AuthenticationService,
     private router: Router,
-    private http: HttpClient
+
   ) {}
 
-  ngOnInit(): void {}
 
   register(
     fname: string,

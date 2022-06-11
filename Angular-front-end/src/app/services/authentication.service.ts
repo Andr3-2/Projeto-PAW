@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Cliente } from '../Models/cliente';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +31,12 @@ export class AuthenticationService {
     return this.http.post<any>('http://localhost:3000/api/v1/role', {
       email,
     });
+  }
+
+  adminAcess():boolean {
+    var role = localStorage.getItem('role');
+    if(role?.match("admin")) return true;
+    return false;
   }
 
   register(fname: string, lname: string, email: string, password: string) {
