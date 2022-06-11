@@ -33,12 +33,6 @@ export class AuthenticationService {
     });
   }
 
-  adminAcess():boolean {
-    var role = localStorage.getItem('role');
-    if(role?.match("admin")) return true;
-    return false;
-  }
-
   register(fname: string, lname: string, email: string, password: string) {
     return this.http.post<any>('http://localhost:3000/api/v1/register', {
       fname: fname,
