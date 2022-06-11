@@ -7,9 +7,10 @@
         >Employees</a
       >
       <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/clientes">Clients</a>
-      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/transactions"
-        >Transactions</a
-      >
+      <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/proposals">Proposals</a>
+      <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/notifications">Notifications</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/transactions">Transactions</a>
+      <a class="navbar-brand" *ngIf="btnlogout"  [(ngModel)]="email" routerLink="/cliente-page">{{email}}</a>
     </div>
 
     <button class="topbutton" *ngIf="btnlogout" (click)="logout()">

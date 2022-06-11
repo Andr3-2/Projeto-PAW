@@ -107,10 +107,11 @@ authController.verifyToken = function (req, res, next) {
 };
 
 authController.verifyRoleAdmin = function (req, res, next) {
+  console.log(req);
   Employee.findById(req.id, function (err, user) {
-    if (err)
-      return res.status(500).send("There was a problem finding the blues");
     if (!user) return res.status(401).send("No user found.");
+    if (err)
+      return res.status(500).send("There was a problem finding the user");
     next();
   });
 };

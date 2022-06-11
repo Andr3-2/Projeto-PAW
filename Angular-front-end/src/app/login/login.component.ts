@@ -28,6 +28,7 @@ export class LoginComponent {
         return alert('Authentication Error');
       }
       localStorage.setItem('currentUser', JSON.stringify(auth));
+      localStorage.setItem('email', email);
     });
     this.auth.role(email).subscribe((role: any) => {
       localStorage.setItem('role', JSON.stringify(role.role));

@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   btnadmin = false;
   btnlogin = true;
   btnlogout = false;
+  email= localStorage.getItem('email');
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.auth.logout();
     this.router.navigate(['/login']);
+    localStorage.removeItem('email');
     this.checklog();
   }
 }

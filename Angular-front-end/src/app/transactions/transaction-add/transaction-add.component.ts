@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Book } from '../../Models/book';
 import { Cliente } from '../../Models/cliente';
 import { Transaction } from '../../Models/transaction';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-transaction-add',
@@ -20,23 +21,23 @@ export class TransactionAddComponent implements OnInit {
     date: new Date()
   };
 
-  constructor(public rest: RestService, private router: Router) {}
+  constructor(public rest: RestService, private router: Router,private cart: ShoppingCartService) {}
 
   ngOnInit(): void {
-    this.transactionData.sender = this.sender;
+    this.transactionData.sender = this.rest.getCliente(localStorage.getItem("id")!);
     this.transactionData.receiver = this.receiver;
     this.transactionData.books = this.books;
     this.transactionData.totalPrice = this.totalPrice;
     console.log(this.sender);
     console.log(this.receiver);
-    
-    
   }
 
   addTransaction() {
     this.rest.addTransaction(this.transactionData).subscribe(
       (result: Transaction) => {
         console.log(result);
+        localStorage.removeItem('');
+        this.cart.clearCart();
         this.router.navigate(['/']);
       },
       (err) => {
