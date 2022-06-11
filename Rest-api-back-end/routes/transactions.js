@@ -9,23 +9,23 @@ router.get("/", function (req, res, next) {
 
 router.get(
   "/show",
-  authController.verifyRoleAdmin,
+  /*authController.verifyRoleAdmin,*/
   transactionController.showAll
 );
 router.get(
   "/show/:id",
-  authController.verifyRoleAdmin,
+  /*authController.verifyRoleAdmin,*/
   transactionController.show
 );
 router.post(
   "/create",
-  authController.verifyRoleAdmin,
+  /*authController.verifyRoleAdmin,*/
   transactionController.create
 );
-router.put("/edit", authController.verifyRoleAdmin, transactionController.edit);
+router.put("/edit/:id", /*authController.verifyRoleAdmin,*/ transactionController.edit);
 router.delete(
   "/delete/:id",
-  authController.verifyRoleAdmin,
+  /*authController.verifyRoleAdmin,*/
   transactionController.delete
 );
 

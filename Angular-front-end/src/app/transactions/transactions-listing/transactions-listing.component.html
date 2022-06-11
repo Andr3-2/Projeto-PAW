@@ -15,12 +15,19 @@
 
     <tr *ngFor="let transaction of transactions; index as i">
       <td>
-        <a routerLink="/transaction-details/{{ transaction._id }}"> {{i}}</a>
+        <a routerLink="/transaction-details/{{ transaction._id }}"> {{ i }}</a>
       </td>
       <td>{{ transaction.date }}</td>
-      <td>{{ transaction.sender }}</td>
-      <td>{{ transaction.receiver }}</td>
-      <td>{{ transaction.books }} €</td>
+      <td>{{ transaction.sender.fname }}</td>
+      <td>{{ transaction.receiver.fname }}</td>
+
+      <td>
+        <tr *ngFor="let book of transaction.books">
+          {{
+            book.title
+          }}
+        </tr>
+      </td>
       <td>{{ transaction.totalPrice }} €</td>
 
       <td>

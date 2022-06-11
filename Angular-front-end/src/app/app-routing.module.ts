@@ -28,6 +28,19 @@ import { AuthGuard } from './authGuard.guard';
 import { RegisterComponent } from './register/register.component';
 import { RoleGuard } from './roleGuard.guard';
 
+import { ClientePageComponent } from './cliente-page/cliente-page.component';
+import { EmployeePageComponent } from './employee-page/employee-page.component';
+
+import { NotificationAddComponent } from './notifications/notification-add/notification-add.component';
+import { NotificationsListingComponent } from './notifications/notifications-listing/notifications-listing.component';
+import { NotificationDetailsComponent } from './notifications/notification-details/notification-details.component';
+import { NotificationEditComponent } from './notifications/notification-edit/notification-edit.component';
+
+import { ProposalsListingComponent } from './proposals/proposals-listing/proposals-listing.component';
+import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
+import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
+import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -35,28 +48,41 @@ const routes: Routes = [
   { path: 'main', component: MainPageComponent },
   { path: 'payment/:cart', component: PaymentPageComponent },
 
-  { path: 'books', component: BooksListingComponent, canActivate: [AuthGuard]},
-  { path: 'book-details/:id', component: BookDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'book-add', component: BookAddComponent , canActivate: [AuthGuard]},
-  { path: 'book-edit/:id', component: BookEditComponent , canActivate: [AuthGuard]},
+  { path: 'cliente-page', component: ClientePageComponent , /*canActivate: [AuthGuard]*/},
+  { path: 'employee-page', component: EmployeePageComponent , /*canActivate: [AuthGuard]*/},
 
-  { path: 'clientes', component: ClientesListingComponent , canActivate: [AuthGuard]},
-  { path: 'cliente-details/:id', component: ClienteDetailsComponent , canActivate: [AuthGuard]},
-  { path: 'cliente-add', component: ClienteAddComponent, canActivate: [AuthGuard] },
-  { path: 'cliente-edit/:id', component: ClienteEditComponent , canActivate: [AuthGuard]},
 
-  { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard,RoleGuard], data:{
+  { path: 'books', component: BooksListingComponent, /* canActivate: [AuthGuard] */},
+  { path: 'book-details/:id', component: BookDetailsComponent, /*canActivate: [AuthGuard] */},
+  { path: 'book-add', component: BookAddComponent , /* canActivate: [AuthGuard]*/},
+  { path: 'book-edit/:id', component: BookEditComponent , /*canActivate: [AuthGuard]*/},
+
+  { path: 'clientes', component: ClientesListingComponent , /*canActivate: [AuthGuard]*/},
+  { path: 'cliente-details/:id', component: ClienteDetailsComponent , /*canActivate: [AuthGuard]*/},
+  { path: 'cliente-add', component: ClienteAddComponent, /*canActivate: [AuthGuard]*/ },
+  { path: 'cliente-edit/:id', component: ClienteEditComponent ,/* canActivate: [AuthGuard]*/},
+
+  { path: 'employees', component: EmployeesListingComponent, /*canActivate: [AuthGuard,RoleGuard], data:{
     role:['admin']
-  } },
-  { path: 'employee-details/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard] },
-  { path: 'employee-add', component: EmployeeAddComponent , canActivate: [AuthGuard]},
-  { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard] },
+  } */},
+  { path: 'employee-details/:id', component: EmployeeDetailsComponent, /*canActivate: [AuthGuard] */},
+  { path: 'employee-add', component: EmployeeAddComponent ,/* canActivate: [AuthGuard]*/},
+  { path: 'employee-edit/:id', component: EmployeeEditComponent,/* canActivate: [AuthGuard] */},
 
-  { path: 'transactions', component: TransactionsListingComponent, canActivate: [AuthGuard]},
-  { path: 'transaction-details/:id', component: TransactionDetailsComponent, canActivate: [AuthGuard]},
-  { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard] },
-  { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard]},
+  { path: 'transactions', component: TransactionsListingComponent, /*canActivate: [AuthGuard]*/},
+  { path: 'transaction-details/:id', component: TransactionDetailsComponent, /*canActivate: [AuthGuard]*/},
+  { path: 'transaction-add', component: TransactionAddComponent, /*canActivate: [AuthGuard]*/ },
+  { path: 'transaction-edit/:id', component: TransactionEditComponent , /*canActivate: [AuthGuard]*/},
 
+  { path: 'notifications', component: NotificationsListingComponent, /* canActivate: [AuthGuard] */},
+  { path: 'notification-details/:id', component: NotificationDetailsComponent, /*canActivate: [AuthGuard] */},
+  { path: 'notification-add', component: NotificationAddComponent , /* canActivate: [AuthGuard]*/},
+  { path: 'notification-edit/:id', component: NotificationEditComponent , /*canActivate: [AuthGuard]*/},
+
+  { path: 'proposals', component: ProposalsListingComponent, /* canActivate: [AuthGuard] */},
+  { path: 'proposal-details/:id', component: ProposalDetailsComponent, /*canActivate: [AuthGuard] */},
+  { path: 'proposal-add', component: ProposalAddComponent , /* canActivate: [AuthGuard]*/},
+  { path: 'proposal-edit/:id', component: ProposalEditComponent , /*canActivate: [AuthGuard]*/},
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

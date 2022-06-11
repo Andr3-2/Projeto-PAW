@@ -10,11 +10,11 @@ router.get("/", function (req, res, next) {
 
 router.get("/show", bookController.showAll);
 router.get("/show/:id", bookController.show);
-router.post("/create", authController.verifyRoleAdmin, bookController.create);
-router.put("/edit/:id", authController.verifyRoleAdmin, bookController.edit);
+router.post("/create", /*authController.verifyRoleAdmin,*/ bookController.create);
+router.put("/edit/:id", /*authController.verifyRoleAdmin,*/ bookController.edit);
 router.delete(
   "/delete/:id",
-  authController.verifyRoleAdmin,
+  /*authController.verifyRoleAdmin,*/
   bookController.delete
 );
 
