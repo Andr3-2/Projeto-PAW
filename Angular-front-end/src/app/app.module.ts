@@ -36,6 +36,19 @@ import { JwtInterceptor } from './jwt.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common';
 
+import { ClientePageComponent } from './cliente-page/cliente-page.component';
+import { EmployeePageComponent } from './employee-page/employee-page.component';
+
+import { NotificationAddComponent } from './notifications/notification-add/notification-add.component';
+import { NotificationsListingComponent } from './notifications/notifications-listing/notifications-listing.component';
+import { NotificationDetailsComponent } from './notifications/notification-details/notification-details.component';
+import { NotificationEditComponent } from './notifications/notification-edit/notification-edit.component';
+
+import { ProposalsListingComponent } from './proposals/proposals-listing/proposals-listing.component';
+import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
+import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
+import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +84,16 @@ import { CommonModule } from '@angular/common';
     
     LoginComponent,
     RegisterComponent,
+    ClientePageComponent,
+    EmployeePageComponent,
+    NotificationAddComponent,
+    NotificationsListingComponent,
+    NotificationDetailsComponent,
+    NotificationEditComponent,
+    ProposalsListingComponent,
+    ProposalAddComponent,
+    ProposalEditComponent,
+    ProposalDetailsComponent,
   ],
   imports: [CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

@@ -8,11 +8,11 @@ router.get("/", function (req, res, next) {
   res.send("Hello Visitor - you're in Clients Router");
 });
 
-router.get("/show",authController.verifyRoleAdmin,clientController.showAll);
+router.get("/show", /* authController.verifyRoleAdmin , */clientController.showAll);
 router.get("/show/:id", clientController.show);
-router.post("/create",authController.verifyRoleAdmin,clientController.create);
-router.put("/edit",clientController.edit);
-router.delete("/delete/:id",authController.verifyRoleAdmin, clientController.delete);
+router.post("/create", /*authController.verifyRoleAdmin, */clientController.create);
+router.put("/edit/:id",clientController.edit);
+router.delete("/delete/:id", /*authController.verifyRoleAdmin ,*/ clientController.delete);
 
 //router.post("/search",clientController.search);
 

@@ -47,7 +47,7 @@ clientController.create = function (req, res, next) {
 
 // edita 1 client
 clientController.edit = function (req, res, next) {
-  Book.findByIdAndUpdate(req.params.id, req.body, (err, editedClient) => {
+  Client.findByIdAndUpdate(req.params.id, req.body, (err, editedClient) => {
     if (err) {
       console.log("Erro a gravar");
       next(err);

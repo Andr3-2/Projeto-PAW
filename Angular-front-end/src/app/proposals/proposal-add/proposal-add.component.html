@@ -1,0 +1,101 @@
+<div class="container">
+  <h1>Proposal Add</h1>
+
+  <div>
+    <label
+      >Proposal Date:
+      <input
+        type="date"
+        [(ngModel)]="proposalData.date"
+        placeholder="Notification date"
+      /> </label
+    ><br />
+    <label
+      >Proposal sender:
+      <input value="{{ proposalData.sender.fname }}" disabled /> </label
+    ><br />
+    <label
+      >Proposal title:
+      <input
+        [(ngModel)]="proposalData.title"
+        placeholder="Notification title"
+      /> </label
+    ><br />
+    <label
+      >Proposal mensage:
+      <input
+        [(ngModel)]="proposalData.mensage"
+        placeholder="Notification mensage"
+      /> </label
+    ><br />
+  </div>
+  <div>
+    <h1>Book</h1>
+    <label
+      >Book category:
+      <input [(ngModel)]="book.category" placeholder="Book category" /> </label
+    ><br />
+    <label
+      >Book title:
+      <input [(ngModel)]="book.title" placeholder="Book title" /> </label
+    ><br />
+    <label
+      >Book author:
+      <input [(ngModel)]="book.author" placeholder="Book author" /> </label
+    ><br />
+    <label
+      >Book year:
+      <input [(ngModel)]="book.year" placeholder="Book year" /> </label
+    ><br />
+    <label
+      >Book description:
+      <input
+        [(ngModel)]="book.description"
+        placeholder="Book description"
+      /> </label
+    ><br />
+    <label
+      >Book ISBN:
+      <input [(ngModel)]="book.ISBN" placeholder="Book ISBN" /> </label
+    ><br />
+    <label
+      >Book new_price:
+      <input
+        [(ngModel)]="book.new_price"
+        placeholder="Book new_price"
+      /> </label
+    ><br />
+    <label
+      >Book used_price:
+      <input
+        [(ngModel)]="book.used_price"
+        placeholder="Book used_price"
+      /> </label
+    ><br />
+    <label
+      >Book new_quantity:
+      <input
+        [(ngModel)]="book.new_quantity"
+        placeholder="Book new_quantity"
+      /> </label
+    ><br />
+    <label
+      >Book used_quantity:
+      <input
+        [(ngModel)]="book.used_quantity"
+        placeholder="Book used_quantity"
+      /> </label
+    ><br />
+    <button class="button" (click)="addBookToProposal()">
+      Add Book To Proposal
+    </button>
+  </div>
+  <div class="button-display">
+    <button class="button" routerLink="/">Home</button>
+    <button class="button" (click)="addProposal()">Save</button>
+  </div>
+</div>
+
+
+
+<span *ngFor="let book of proposalData.books">{{book.title}}</span>

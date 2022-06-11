@@ -1,13 +1,9 @@
 <div class="container">
     <div *ngIf="cliente" class="clientes">
     
-      <h1>Cliente - {{ cliente.fname }} {{ cliente.lname }}</h1>
+      <h1>Bem Vindo! - {{ cliente.fname }} {{ cliente.lname }}</h1>
 
       <table>
-        <tr>
-          <th>_id</th>
-          <td>{{ cliente._id }}</td>
-        </tr>
         <tr>
           <th>First Name:</th>
           <td>{{ cliente.fname }}</td>
@@ -56,16 +52,12 @@
             <tr *ngFor="let book of cliente.booksSold">{{book.title}}</tr>
           </td>
         </tr>
-        <tr>
-          <th>Activity State</th>
-          <td>{{ cliente.activityState }}</td>
-        </tr>
       </table>
     
       <div class="button-display">
         <button class="button" routerLink="/cliente-edit/{{ cliente._id }}">Update</button>
-        <button class="button"(click)="deleteCliente(cliente._id)">Delete</button>
-        <button class="button" routerLink="/clientes">Home</button>
+        <button class="button" routerLink="/main">Home</button>
       </div>
     </div>
+    <button class="button" routerLink="/proposals">Vender</button>
     </div>

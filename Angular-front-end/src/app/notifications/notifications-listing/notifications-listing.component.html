@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Notifications Listing</h1>
+
+  <button class="button" routerLink="/notification-add">Add</button>
+
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Mensage</th>
+      <th>Book</th>
+    </tr>
+    <tr *ngFor="let notification of notifications; index as i">
+      <td>
+        <a routerLink="/notification-details/{{ notification._id }}">
+          {{ i }}</a
+        >
+      </td>
+      <td>{{ notification.date }}</td>
+      <td>{{ notification.title }}</td>
+      <td>{{ notification.mensage }}</td>
+      <td>
+        <span *ngIf="notification.book != null">{{
+          notification.book.title
+        }}</span>
+      </td>
+      <td>
+        <span *ngIf="notification.book != null">
+          <button (click)="addToStore(notification.book, notification._id)">AddToStore</button>
+        </span>
+      </td>
+
+      <td>
+        <button routerLink="/notification-edit/{{ notification._id }}">
+          update
+        </button>
+      </td>
+      <td>
+        <button (click)="deleteNotification(notification._id)">delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
