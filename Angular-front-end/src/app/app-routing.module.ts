@@ -40,6 +40,7 @@ import { ProposalsListingComponent } from './proposals/proposals-listing/proposa
 import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
 import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
+import { ProposalsListingBComponent } from './proposals/proposals-listing-b/proposals-listing-b.component';
 
 
 const routes: Routes = [
@@ -72,6 +73,7 @@ const routes: Routes = [
   { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard,RoleGuard]},
 
   { path: 'proposals', component: ProposalsListingComponent, canActivate: [AuthGuard,RoleGuard]},
+  { path: 'proposals-b', component: ProposalsListingBComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'proposal-details/:id', component: ProposalDetailsComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'proposal-add', component: ProposalAddComponent , canActivate: [AuthGuard,RoleGuard]},
   { path: 'proposal-edit/:id', component: ProposalEditComponent , canActivate: [AuthGuard,RoleGuard]},

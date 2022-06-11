@@ -48,6 +48,7 @@ import { ProposalsListingComponent } from './proposals/proposals-listing/proposa
 import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
 import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
+import { ProposalsListingBComponent } from './proposals/proposals-listing-b/proposals-listing-b.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-
     ProposalAddComponent,
     ProposalEditComponent,
     ProposalDetailsComponent,
+    ProposalsListingBComponent,
   ],
   imports: [CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

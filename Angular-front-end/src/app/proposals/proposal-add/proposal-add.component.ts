@@ -12,6 +12,7 @@ export class ProposalAddComponent implements OnInit {
   book: any = {};
 
   proposalData: any = {
+    checkedByEmployee: false,
     sender: {},
     books: [],
   };
