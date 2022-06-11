@@ -22,6 +22,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  hidebuttons() {
+    if (localStorage.getItem('role') === 'admin') {
+      (document.getElementById('admin') as HTMLFormElement).style.visibility =
+        'visible';
+      return;
+    }
+  }
+
   login(email: string, password: string): void {
     if (email == '' || password == '') {
       alert('Email and Password cant be empty');
@@ -40,5 +48,6 @@ export class LoginComponent implements OnInit {
       }
       this.router.navigate(['/']);
     });
+    this.hidebuttons();
   }
 }

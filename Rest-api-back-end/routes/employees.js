@@ -8,7 +8,7 @@ router.get("/", function (req, res, next) {
   res.send("Hello Visitor - you're in Employees Router");
 });
 
-router.get("/show",authController.verifyRoleAdmin, employeeController.showAll);
+router.get("/show",/*authController.verifyRoleAdmin,*/ employeeController.showAll);
 router.get("/show/:id",authController.verifyRoleAdmin, employeeController.show);
 router.post("/create",authController.verifyRoleAdmin, employeeController.create);
 router.put("/edit",authController.verifyRoleAdmin, employeeController.edit);
