@@ -45,6 +45,18 @@
           <td>{{ cliente.points }}</td>
         </tr>
         <tr>
+          <th>BooksBought</th>
+          <td>
+            <tr *ngFor="let book of cliente.booksBought">{{book.title}}</tr>
+          </td>
+        </tr>
+        <tr>
+          <th>BooksSold</th>
+          <td>
+            <tr *ngFor="let book of cliente.booksSold">{{book.title}}</tr>
+          </td>
+        </tr>
+        <tr>
           <th>Activity State</th>
           <td>{{ cliente.activityState }}</td>
         </tr>

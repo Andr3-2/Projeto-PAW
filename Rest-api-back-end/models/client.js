@@ -10,8 +10,8 @@ var clientSchema = new mongoose.Schema({
   contact: Number,
   NIF: { type: Number },
   points: { type: Number, default: 0 },
-  booksSold: Array,
-  booksBought: Array,
+  booksSold: [Object],
+  booksBought: [Object],
   activityState: { type: String, default: "ACTIVE" },
   password: { type: String, required: true },
 });

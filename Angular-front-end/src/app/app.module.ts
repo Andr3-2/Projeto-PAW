@@ -34,7 +34,20 @@ import { PaymentPageComponent } from './payment-page/payment-page.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { RegisterComponent } from './register/register.component';
-import { RoleGuard } from './roleGuard.guard';
+import { CommonModule } from '@angular/common';
+
+import { ClientePageComponent } from './cliente-page/cliente-page.component';
+import { EmployeePageComponent } from './employee-page/employee-page.component';
+
+import { NotificationAddComponent } from './notifications/notification-add/notification-add.component';
+import { NotificationsListingComponent } from './notifications/notifications-listing/notifications-listing.component';
+import { NotificationDetailsComponent } from './notifications/notification-details/notification-details.component';
+import { NotificationEditComponent } from './notifications/notification-edit/notification-edit.component';
+
+import { ProposalsListingComponent } from './proposals/proposals-listing/proposals-listing.component';
+import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
+import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
+import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
 
 @NgModule({
   declarations: [
@@ -67,12 +80,22 @@ import { RoleGuard } from './roleGuard.guard';
     /*Stuff*/
     ShoppingCartComponent,
     MainPageComponent,
-    LoginComponent,
-
+    PaymentPageComponent,
+    
     LoginComponent,
     RegisterComponent,
+    ClientePageComponent,
+    EmployeePageComponent,
+    NotificationAddComponent,
+    NotificationsListingComponent,
+    NotificationDetailsComponent,
+    NotificationEditComponent,
+    ProposalsListingComponent,
+    ProposalAddComponent,
+    ProposalEditComponent,
+    ProposalDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent],

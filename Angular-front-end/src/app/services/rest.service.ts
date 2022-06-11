@@ -5,6 +5,8 @@ import { Book } from '../Models/book';
 import { Cliente } from '../Models/cliente';
 import { Employee } from '../Models/employee';
 import { Transaction } from '../Models/transaction';
+import { Notification } from '../Models/notification';
+import { Proposal } from '../Models/proposal';
 
 const endpoint = 'http://localhost:3000/api/v1/';
 const httpOptions = {
@@ -143,6 +145,73 @@ export class RestService {
   deleteTransaction(id: string): Observable<Transaction> {
     return this.http.delete<Transaction>(
       endpoint + 'transactions/delete/' + id,
+      httpOptions
+    );
+  }
+
+  // Notifications - #########################################################
+
+  getNotifications(): Observable<Notification[]> {
+    return this.http.get<Notification[]>(endpoint + 'notifications/show');
+  }
+
+  getNotification(id: String): Observable<Notification> {
+    return this.http.get<Notification>(endpoint + 'notifications/show/' + id);
+  }
+
+  addNotification(notification: Notification): Observable<Notification> {
+    return this.http.post<Notification>(
+      endpoint + 'notifications/create',
+      JSON.stringify(notification),
+      httpOptions
+    );
+  }
+
+  updateNotification(
+    id: string,
+    notification: Notification
+  ): Observable<Notification> {
+    return this.http.put<Notification>(
+      endpoint + 'notifications/edit/' + id,
+      JSON.stringify(notification),
+      httpOptions
+    );
+  }
+  deleteNotification(id: string): Observable<Notification> {
+    return this.http.delete<Notification>(
+      endpoint + 'notifications/delete/' + id,
+      httpOptions
+    );
+  }
+
+  // Proposals - #########################################################
+
+  getProposals(): Observable<Proposal[]> {
+    return this.http.get<Proposal[]>(endpoint + 'proposals/show');
+  }
+
+  getProposal(id: String): Observable<Proposal> {
+    return this.http.get<Proposal>(endpoint + 'proposals/show/' + id);
+  }
+
+  addProposal(proposal: Proposal): Observable<Proposal> {
+    return this.http.post<Proposal>(
+      endpoint + 'proposals/create',
+      JSON.stringify(proposal),
+      httpOptions
+    );
+  }
+
+  updateProposal(id: string, proposal: Proposal): Observable<Proposal> {
+    return this.http.put<Proposal>(
+      endpoint + 'proposals/edit/' + id,
+      JSON.stringify(proposal),
+      httpOptions
+    );
+  }
+  deleteProposal(id: string): Observable<Proposal> {
+    return this.http.delete<Proposal>(
+      endpoint + 'proposals/delete/' + id,
       httpOptions
     );
   }

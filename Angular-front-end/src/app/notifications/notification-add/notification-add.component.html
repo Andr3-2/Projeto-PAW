@@ -1,0 +1,82 @@
+<div class="container">
+  <h1>Notification Add</h1>
+  <div>
+    <label
+      >Notification Date:
+      <input type="date"
+        [(ngModel)]="notificationData.date"
+        placeholder="Notification date"
+      /> </label
+    ><br />
+    <label
+      >Notification title:
+      <input
+        [(ngModel)]="notificationData.title"
+        placeholder="Notification title"
+      /> </label
+    ><br />
+    <label
+      >Notification mensage:
+      <input
+        [(ngModel)]="notificationData.mensage"
+        placeholder="Notification mensage"
+      /> </label
+    ><br />
+  </div>
+      <button class="button" (click)="showBookForm()">AddBook</button>
+  <div *ngIf="bookForm">
+    <label
+      >Book category:
+      <input
+        [ngModel]="notificationData.book.category"
+        placeholder="Book category"
+      /> </label
+    ><br />
+    <label
+      >Book title:
+      <input
+        [(ngModel)]="notificationData.book.title"
+        placeholder="Book title"
+      /> </label
+    ><br />
+    <label
+      >Book author:
+      <input
+        [(ngModel)]="notificationData.book.author"
+        placeholder="Book author"
+      /> </label
+    ><br />
+    <label
+      >Book year:
+      <input
+        [(ngModel)]="notificationData.book.year"
+        placeholder="Book year"
+      /> </label
+    ><br />
+    <label
+      >Book description:
+      <input
+        [(ngModel)]="notificationData.book.description"
+        placeholder="Book description"
+      /> </label
+    ><br />
+    <label
+      >Book ISBN:
+      <input
+        [(ngModel)]="notificationData.book.ISBN"
+        placeholder="Book ISBN"
+      /> </label
+    ><br />
+    <label
+      >Book new_price:
+      <input
+        [(ngModel)]="notificationData.book.new_price"
+        placeholder="Book new_price"
+      />
+    </label>
+  </div>
+  <div class="button-display">
+    <button class="button" routerLink="/">Home</button>
+    <button class="button" (click)="addNotification()">Save</button>
+  </div>
+</div>

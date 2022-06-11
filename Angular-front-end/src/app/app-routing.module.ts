@@ -28,6 +28,19 @@ import { AuthGuard } from './authGuard.guard';
 import { RegisterComponent } from './register/register.component';
 import { RoleGuard } from './roleGuard.guard';
 
+import { ClientePageComponent } from './cliente-page/cliente-page.component';
+import { EmployeePageComponent } from './employee-page/employee-page.component';
+
+import { NotificationAddComponent } from './notifications/notification-add/notification-add.component';
+import { NotificationsListingComponent } from './notifications/notifications-listing/notifications-listing.component';
+import { NotificationDetailsComponent } from './notifications/notification-details/notification-details.component';
+import { NotificationEditComponent } from './notifications/notification-edit/notification-edit.component';
+
+import { ProposalsListingComponent } from './proposals/proposals-listing/proposals-listing.component';
+import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
+import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
+import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -56,6 +69,10 @@ const routes: Routes = [
   { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard,RoleGuard] },
   { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard,RoleGuard]},
 
+  { path: 'proposals', component: ProposalsListingComponent, /* canActivate: [AuthGuard] */},
+  { path: 'proposal-details/:id', component: ProposalDetailsComponent, /*canActivate: [AuthGuard] */},
+  { path: 'proposal-add', component: ProposalAddComponent , /* canActivate: [AuthGuard]*/},
+  { path: 'proposal-edit/:id', component: ProposalEditComponent , /*canActivate: [AuthGuard]*/},
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

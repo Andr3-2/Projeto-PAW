@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Proposals Listing</h1>
+
+  <button class="button" routerLink="/proposal-add">Add</button>
+
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Mensage</th>
+      <th>Book</th>
+    </tr>
+    <tr *ngFor="let proposal of proposals; index as i">
+      <td>
+        <a routerLink="/notification-details/{{ proposal._id }}"> {{ i }}</a>
+      </td>
+      <td>{{ proposal.date }}</td>
+      <td>{{ proposal.title }}</td>
+      <td>{{ proposal.mensage }}</td>
+      <td>
+        <tr *ngFor="let book of proposal.books">
+          {{
+            book.title
+          }}
+        </tr>
+      <td>
+        <button (click)="acceptProposal(proposal.sender, proposal.books, proposal._id)">
+          Accept
+        </button>
+      </td>
+      <td>
+        <button routerLink="/notification-edit/{{ proposal._id }}">
+          update
+        </button>
+      </td>
+      <td>
+        <button (click)="deleteProposal(proposal._id)">delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
