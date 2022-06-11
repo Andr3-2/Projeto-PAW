@@ -19,11 +19,12 @@ export class RoleGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.isAuthorized();
+    return this.adminAcess();
   }
 
-  private isAuthorized(): boolean {
-    if (localStorage.getItem('role') == 'admin') return true;
+  adminAcess():boolean {
+    var role = localStorage.getItem('role');
+    if(role?.match("admin")) return true;
     return false;
   }
 }

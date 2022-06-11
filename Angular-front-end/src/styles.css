@@ -17,7 +17,7 @@
   .topbutton{
     transition-duration: 0.4s;
     padding: 5px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     border: solid 3px green;
     border-radius: 6px;
     margin-right: 10px;
@@ -25,7 +25,7 @@
   
   .topbutton:hover{
     transition-duration: 0.4s;
-    padding: 5px 10px;
+    padding: 6px 11px;
     margin-bottom: 10px;
     border: solid 3px green;
     border-radius: 6px;

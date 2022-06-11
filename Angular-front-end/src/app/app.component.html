@@ -2,24 +2,26 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">BookStore</a>
-      <a class="navbar-brand" id="admin" routerLink="/books">Books</a>
-      <a class="navbar-brand" id="admin" routerLink="/employees">Employees</a>
-      <a class="navbar-brand" id="admin" routerLink="/clientes">Clients</a>
-      <a class="navbar-brand" id="admin" routerLink="/transactions"
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/books">Books</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/employees"
+        >Employees</a
+      >
+      <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/clientes">Clients</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/transactions"
         >Transactions</a
       >
     </div>
 
-    <button class="topbutton" (click)="logout()">Logout</button>
-    <button class="topbutton" routerLink="/register">Register</button>
-    <button class="topbutton" routerLink="/login">Login</button>
+    <button class="topbutton" *ngIf="btnlogout" (click)="logout()">
+      Logout
+    </button>
+    <button class="topbutton" *ngIf="btnlogin" routerLink="/register">
+      Register
+    </button>
+    <button class="topbutton" *ngIf="btnlogin" routerLink="/login">
+      Login
+    </button>
   </nav>
 </div>
-<script>
-  if (localStorage.getItem("role") === "admin") {
-    document.getElementById("admin").style.visibility = "visible";
-    return;
-  }
-</script>
 
 <router-outlet></router-outlet>

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 
 @Component({
@@ -8,24 +7,33 @@ import { AuthenticationService } from './services/authentication.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Angular_REST';
+  btnadmin = false;
+  btnlogin = true;
+  btnlogout = false;
 
-  constructor(private auth: AuthenticationService) {}
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
-  ngOnInit() {
-    this.hidebuttons();
+  ngOnInit(): void {
+    this.checklog();
   }
 
-  hidebuttons() {
-    if (localStorage.getItem('role') === 'admin') {
-      (document.getElementById('admin') as HTMLFormElement).style.visibility =
-        'visible';
-      return;
+
+  checklog() {
+    let role = localStorage.getItem('role');
+    console.log("role:" + role);
+    if (localStorage.getItem('currentUser')) {
+      this.btnlogin = false;
+      this.btnlogout = true;
     }
+    this.btnadmin = false;
+    if (role?.match("admin")) this.btnadmin = true;
   }
 
   logout(): void {
     this.auth.logout();
+    this.router.navigate(['/login']);
+    this.checklog();
   }
 }
