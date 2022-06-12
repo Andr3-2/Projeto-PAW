@@ -1,5 +1,6 @@
 import { Component, DebugElement, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -8,16 +9,22 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @Input() user: any = {
     email: '',
     password: '',
   };
   constructor(
     public auth: AuthenticationService,
-
+    private app: AppComponent,
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+    if(localStorage.getItem('currentUser')){
+      this.router.navigate(['/']);
+    }
+  }
 
   login(email: string, password: string): void {
     if (email == '' || password == '') {
@@ -33,10 +40,7 @@ export class LoginComponent {
     });
     this.auth.role(email).subscribe((role: any) => {
       localStorage.setItem('role', JSON.stringify(role.role));
-      if (role === 'admin') {
-        this.router.navigate(['/admin']);
-      }
-      this.router.navigate(['/']);
     });
+    window.location.reload();
   }
 }
