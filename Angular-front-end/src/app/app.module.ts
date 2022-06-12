@@ -50,6 +50,7 @@ import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.c
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
 import { BookDetailsBComponent } from './books/book-details-b/book-details-b.component';
 import { ProposalsListingBComponent} from './proposals/proposals-listing-b/proposals-listing-b.component';
+import { NotificationDisplayBComponent } from './notifications/notification-display-b/notification-display-b.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { ProposalsListingBComponent} from './proposals/proposals-listing-b/propo
     ProposalDetailsComponent,
     BookDetailsBComponent,
     ProposalsListingBComponent,
+    NotificationDisplayBComponent,
   ],
   imports: [
     CommonModule,

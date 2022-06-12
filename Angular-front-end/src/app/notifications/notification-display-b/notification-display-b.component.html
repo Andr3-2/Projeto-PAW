@@ -1,0 +1,9 @@
+<div>
+    <h1>News</h1>
+<div class="not" *ngFor="let notification of notifications; index as i">
+  <h3>{{ notification.title }}</h3>
+  <h4>{{ notification.date }}</h4>
+  <span *ngIf="notification.book != null">{{ notification.book.title }}</span>
+  <p>{{ notification.mensage }}</p>
+</div>
+</div>
