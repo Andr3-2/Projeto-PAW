@@ -10,6 +10,7 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class EmployeePageComponent implements OnInit {
   employee: any;
+  admin = true;
 
   constructor(
     private restService: RestService,
@@ -18,9 +19,11 @@ export class EmployeePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //substituir este employee por currentUser
-    this.restService.getEmployees().subscribe((employees) => {
-      this.employee = employees[0];
+    //substituir este cliente por currentUser
+    var token = JSON.parse(localStorage.getItem('currentUser')!).token;
+    this.restService.getUser(token).subscribe((user) => {
+      this.employee = user;
     });
+    if (localStorage.getItem('role')?.match('admin')) this.admin = false;
   }
 }

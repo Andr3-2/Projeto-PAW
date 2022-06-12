@@ -10,7 +10,9 @@
       <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/proposals">Proposals</a>
       <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/notifications">Notifications</a>
       <a class="navbar-brand" *ngIf="btnadmin" routerLink="/transactions">Transactions</a>
-      <a class="navbar-brand" *ngIf="btnlogout" routerLink="/cliente-page">{{email}}</a>
+      <a class="navbar-brand" *ngIf="!btnadmin" routerLink="/cliente-page">{{email}}</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/employee-page">{{email}}</a>
+
     </div>
 
     <button class="topbutton" *ngIf="btnlogout" (click)="logout()">

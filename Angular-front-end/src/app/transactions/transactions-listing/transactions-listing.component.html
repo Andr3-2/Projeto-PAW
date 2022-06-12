@@ -29,15 +29,6 @@
         </tr>
       </td>
       <td>{{ transaction.totalPrice }} €</td>
-
-      <td>
-        <button routerLink="/transaction-edit/{{ transaction._id }}">
-          update
-        </button>
-      </td>
-      <td>
-        <button (click)="deleteTransaction(transaction._id)">delete</button>
-      </td>
     </tr>
   </table>
 </div>
