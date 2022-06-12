@@ -8,8 +8,10 @@
   ></app-transaction-add>
 </div>
 
-<ng-template #loggedOut>
-  <div>You need to be a client to make a purchase</div>
+<ng-template #loggedOut >
+  <h1 class="error">You need to be a client to make a purchase</h1>
 </ng-template>
 
-<button routerLink="/">Home</button>
+<div class="button-display">
+<button class="button" routerLink="/">Home</button>
+</div>
