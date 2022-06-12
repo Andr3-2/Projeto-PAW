@@ -3,7 +3,10 @@
 <div class="container">
   <div *ngFor="let book of books" class="object">
     <div class="text">
-      <span>{{ book.title }}</span>
+      <span
+        ><a href="book-details-b/{{ book._id }}">{{ book.title }}</a></span
+      ><br />
+      <span>{{ book.new_price }}€</span>
     </div>
     <div class="image">
       <img
@@ -14,9 +17,9 @@
       />
     </div>
     <div class="text">
-      <button (click)="addBookToCart(book)">Add Carrinho</button>
+      <button class="button-green" (click)="addBookToCart(book)">
+        Adicionar ao Carrinho
+      </button>
     </div>
   </div>
 </div>
-
-

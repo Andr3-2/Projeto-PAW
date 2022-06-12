@@ -13,10 +13,11 @@ import { Transaction } from 'src/app/Models/transaction';
 export class ProposalsListingComponent implements OnInit {
   proposals: Proposal[] = [];
   receiver: any; //adicinar aos campos da proposal maybe
-
+  btnadmin = false;
   constructor(private restService: RestService, private router: Router) {}
 
   ngOnInit(): void {
+    if(localStorage.getItem('admin')?.match("admin")) this.btnadmin =true;
     this.getProposals();
     this.restService.getEmployees().subscribe((employeesData) => {
       this.receiver = employeesData[0];

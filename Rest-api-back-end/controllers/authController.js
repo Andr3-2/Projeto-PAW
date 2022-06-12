@@ -79,14 +79,19 @@ authController.register = function (req, res) {
 };
 
 authController.profile = function (req, res) {
-  Employee.findById(req._id, function (err, user) {
+  //console.log(req.body.token);
+  const decoded = jwt.decode(req.body.token, config);
+  var userId = decoded.id;
+  console.log(userId);
+  Employee.findById(userId, function (err, user) {
     if (err) return res.status(500).send("Probblem findig user");
     if (!user) {
-      Client.findById(req._id, function (err, user) {
+      Client.findById(userId, function (err, user) {
         if (err) return res.status(500).send("Probblem findig user");
         if (!user) return res.status(404).send("No User Found");
         return res.status(200).send(user);
       });
+      return;
     }
     return res.status(200).send(user);
   });

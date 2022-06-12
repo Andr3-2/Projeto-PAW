@@ -1,0 +1,19 @@
+<div class="container">
+  
+  <div *ngIf="book" class="books">
+    <h1>{{ book.title }}</h1>
+    <h3>Category: {{ book.category }}</h3>
+    <h3>Author: {{ book.author }}</h3>
+    <h5>Description:</h5>
+    <p>{{ book.description }}</p>
+    <h3>Release Date: {{book.year}}</h3>
+    <h3>ISBN: {{book.ISBN}}</h3>
+    <h3>Price: {{book.new_price}}€ Stock: {{book.new_quantity}}</h3>
+    <h3>Price: {{book.used_price}}€ Stock: {{book.used_quantity}}</h3>
+  
+    <div class="button-display">
+      <button class="button" routerLink="/">Home</button>
+    </div>
+  </div>
+  
+  </div>

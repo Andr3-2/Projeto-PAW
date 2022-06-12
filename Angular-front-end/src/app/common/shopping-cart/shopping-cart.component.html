@@ -1,10 +1,14 @@
-
-<div *ngIf="cart.length > 0">
-  <h1>ShoppingCart</h1>
-  <div *ngFor="let book of cart; index as i">
-    <span>{{ book._id }}</span>
-    <button (click)="removeBookFromCart(i)">remove</button>
+<div class="conatainer">
+  <div *ngIf="cart.length > 0">
+    <h1>ShoppingCart</h1>
+    <div *ngFor="let book of cart; index as i">
+      <span>{{ book.title }} - {{ book.new_price }}€</span>
+      <button class="button-red" (click)="removeBookFromCart(i)">remove</button>
+    </div>
+    <h2>{{ total }} €</h2>
+    <div class="button-display">
+      <button class="button-red" (click)="clearCart()">clear</button>
+      <button class="button-green" (click)="makePurchase()">Pagar</button>
+    </div>
   </div>
-  <button (click)="clearCart()">clear</button>
-  <button (click)="makePurchase()">Pagar</button>
 </div>

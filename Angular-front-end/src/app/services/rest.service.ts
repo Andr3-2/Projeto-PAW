@@ -21,6 +21,9 @@ const httpOptions = {
 export class RestService {
   constructor(private http: HttpClient) {}
 
+  getUser(token: any) {
+    return this.http.post<any>(endpoint + '/profile', { token });
+  }
   // Books - #########################################################
 
   getBooks(): Observable<Book[]> {

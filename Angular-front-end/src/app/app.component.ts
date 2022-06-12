@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   btnadmin = false;
   btnlogin = true;
   btnlogout = false;
-  email= localStorage.getItem('email');
+  email = localStorage.getItem('email');
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
@@ -20,22 +20,22 @@ export class AppComponent implements OnInit {
     this.checklog();
   }
 
-
-  checklog() {
+  checklog():void {
     let role = localStorage.getItem('role');
-    console.log("role:" + role);
+    console.log('role:' + role);
+    this.btnlogin = true;
+    this.btnlogout = false;
     if (localStorage.getItem('currentUser')) {
       this.btnlogin = false;
       this.btnlogout = true;
     }
     this.btnadmin = false;
-    if (role?.match("admin")) this.btnadmin = true;
+    if (role?.match('admin')) this.btnadmin = true;
   }
 
   logout(): void {
     this.auth.logout();
     this.router.navigate(['/login']);
-    localStorage.removeItem('email');
     this.checklog();
   }
 }

@@ -1,63 +1,42 @@
 <div class="container">
-    <div *ngIf="cliente" class="clientes">
-    
-      <h1>Bem Vindo! - {{ cliente.fname }} {{ cliente.lname }}</h1>
+  <div *ngIf="cliente" class="clientes">
+    <h1>Bem Vindo! - {{ cliente.fname }} {{ cliente.lname }}</h1>
 
-      <table>
-        <tr>
-          <th>First Name:</th>
-          <td>{{ cliente.fname }}</td>
-        </tr>
-        <tr>
-          <th>Last Name:</th>
-          <td>{{ cliente.lname }}</td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td>{{ cliente.email }}</td>
-        </tr>
-        <tr>
-          <th>Address</th>
-          <td>{{ cliente.address }}</td>
-        </tr>
-        <tr>
-          <th>Zipcode</th>
-          <td>{{ cliente.zipcode }}</td>
-        </tr>
-        <tr>
-          <th>City</th>
-          <td>{{ cliente.city }}</td>
-        </tr>
-        <tr>
-          <th>Contact</th>
-          <td>{{ cliente.contact }}</td>
-        </tr>
-        <tr>
-          <th>NIF</th>
-          <td>{{ cliente.NIF }}</td>
-        </tr>
-        <tr>
-          <th>Points</th>
-          <td>{{ cliente.points }}</td>
-        </tr>
-        <tr>
-          <th>BooksBought</th>
-          <td>
-            <tr *ngFor="let book of cliente.booksBought">{{book.title}}</tr>
-          </td>
-        </tr>
-        <tr>
-          <th>BooksSold</th>
-          <td>
-            <tr *ngFor="let book of cliente.booksSold">{{book.title}}</tr>
-          </td>
-        </tr>
-      </table>
-    
-      <div class="button-display">
-        <button class="button" routerLink="/cliente-edit/{{ cliente._id }}">Update</button>
-        <button class="button" routerLink="/main">Home</button>
-      </div>
+    <h3>Shipping Info:</h3>
+    <span>Address:{{ cliente.address }}</span
+    ><br />
+    <span>City:{{ cliente.city }}</span
+    ><br />
+    <span>ZipCode:{{ cliente.zipcode }}</span>
+    <h3>Contact Info:</h3>
+    <span>Email: {{ cliente.email }}</span
+    ><br />
+    <span>Contact:{{ cliente.contact }}</span
+    ><br />
+    <span>ZipCode:{{ cliente.zipcode }}</span>
+
+    <h3>Other Info:</h3>
+    <span>NIF: {{ cliente.NIF }}</span
+    ><br />
+    <span>Points:{{ cliente.points }}</span
+    ><br />
+
+    <h3>BooksBought</h3>
+    <div *ngFor="let book of cliente.booksBought">
+      <li routerLink="/book-details-b/{{ book.id }}">{{ book.title }}</li>
+    </div>
+
+    <h3>BooksSold</h3>
+    <div *ngFor="let book of cliente.booksSold">
+      <li routerLink="/book-details-b/{{ book.id }}">{{ book.title }}</li>
+    </div>
+
+    <div class="button-display">
+      <button class="button" routerLink="/cliente-edit/{{ cliente._id }}">
+        Update
+      </button>
+      <button class="button" routerLink="/main">Home</button>
+      <button *ngIf="admin" class="button" routerLink="/proposals">Vender</button>
     </div>
     <button class="button" routerLink="/proposals-b">Vender</button>
     </div>
