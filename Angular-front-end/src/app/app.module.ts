@@ -49,7 +49,7 @@ import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.comp
 import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
 import { BookDetailsBComponent } from './books/book-details-b/book-details-b.component';
-import { ProposalsListingBComponent} from './proposals/proposals-listing-b/proposals-listing-b.component'
+import { ProposalsListingBComponent} from './proposals/proposals-listing-b/proposals-listing-b.component';
 
 @NgModule({
   declarations: [

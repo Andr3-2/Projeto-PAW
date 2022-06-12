@@ -70,4 +70,18 @@ bookController.delete = function (req, res, next) {
   });
 };
 
+bookController.search = function (req, res, next) {
+  console.log(req.body.searchOpt);
+  console.log(req.body.search);
+  Book.find(
+    { [req.body.searchOpt]: { $regex: req.body.search } },
+    (err, books) => {
+      if (!books) return res.status(401).send("no Books found");
+      if (err) res.status(403).send("DataBase Error");
+      //console.log(books);
+      res.status(200).send(books);
+    }
+  );
+};
+
 module.exports = bookController;

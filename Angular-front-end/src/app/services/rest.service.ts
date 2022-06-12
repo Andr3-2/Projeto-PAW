@@ -53,6 +53,12 @@ export class RestService {
     return this.http.delete<Book>(endpoint + 'books/delete/' + id, httpOptions);
   }
 
+  searchBook(searchOpt: string, search: string): Observable<Book[]> {
+    return this.http.post<Book[]>(endpoint + 'books/search', {
+      search,
+      searchOpt,
+    });
+  }
   // Clients - #########################################################
 
   getClientes(): Observable<Cliente[]> {

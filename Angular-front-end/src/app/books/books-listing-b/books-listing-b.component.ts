@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,11 @@ import { Book } from '../../Models/book';
 export class BooksListingBComponent implements OnInit {
   books: Book[] = [];
   cart: Book[] = [];
+
+  @Input('ngModel') search: any = {
+    searchOpt: '',
+    search: '',
+  };
 
   constructor(
     private shoppingCartService: ShoppingCartService,
@@ -39,5 +44,12 @@ export class BooksListingBComponent implements OnInit {
 
   addBookToCart(book: Book): void {
     this.shoppingCartService.addBookToCart(book);
+  }
+
+  getsearch(searchOpt: string, search: string) {
+    this.restService
+      .searchBook(searchOpt,search)
+      .subscribe((books) => (this.books = books));
+      console.log(this.books);
   }
 }

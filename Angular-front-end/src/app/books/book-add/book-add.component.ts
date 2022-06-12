@@ -11,7 +11,7 @@ import { Book } from '../../Models/book';
 })
 export class BookAddComponent implements OnInit {
 
-  @Input() bookData: any = {
+  @Input('ngModel') bookData: any = {
     category: '',
     title: '',
     author: '',

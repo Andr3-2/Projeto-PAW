@@ -11,6 +11,7 @@ router.get("/", function (req, res, next) {
 router.get("/show", bookController.showAll);
 router.get("/show/:id", bookController.show);
 router.post("/create", /*authController.verifyRoleAdmin,*/ bookController.create);
+router.post("/search", /*authController.verifyRoleAdmin,*/ bookController.search);
 router.put("/edit/:id", /*authController.verifyRoleAdmin,*/ bookController.edit);
 router.delete(
   "/delete/:id",

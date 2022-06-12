@@ -90,7 +90,7 @@ h1 {
 
 .button {
   transition-duration: 0.4s;
-  padding: 10px 24px;
+  padding: 5px 24px;
   margin-bottom: 10px;
   border: solid 3px var(--cor);
   border-radius: 6px;
