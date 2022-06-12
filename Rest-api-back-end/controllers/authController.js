@@ -79,10 +79,10 @@ authController.register = function (req, res) {
 };
 
 authController.profile = function (req, res) {
-  //console.log(req.body.token);
+  //console.log("token",req.body.token);
   const decoded = jwt.decode(req.body.token, config);
   var userId = decoded.id;
-  console.log(userId);
+  //console.log("userId",userId);
   Employee.findById(userId, function (err, user) {
     if (err) return res.status(500).send("Probblem findig user");
     if (!user) {
@@ -93,6 +93,7 @@ authController.profile = function (req, res) {
       });
       return;
     }
+    //console.log("user", user);
     return res.status(200).send(user);
   });
 };

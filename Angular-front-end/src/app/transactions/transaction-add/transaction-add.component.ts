@@ -12,31 +12,44 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
   styleUrls: ['./transaction-add.component.css'],
 })
 export class TransactionAddComponent implements OnInit {
+  @Input('isClientReceiver') isClientReceiver: any;
   @Input('sender') sender: any;
   @Input('receiver') receiver: any;
   @Input('books') books: Book[] = [];
   @Input('totalPrice') totalPrice: any;
 
   transactionData: any = {
-    date: new Date()
+    date: new Date(),
   };
 
-  constructor(public rest: RestService, private router: Router,private cart: ShoppingCartService) {}
+  constructor(
+    public restService: RestService,
+    private router: Router,
+    private cart: ShoppingCartService
+  ) {}
 
   ngOnInit(): void {
-    this.transactionData.sender = this.rest.getCliente(localStorage.getItem("id")!);
+    if (this.isClientReceiver) {
+      console.log();
+      console.log(localStorage.getItem('role'));
+      console.log(typeof(localStorage.getItem('role')));
+
+      //alert('You need to be a client to buy books');
+    }
+
+    this.transactionData.sender = this.sender;
     this.transactionData.receiver = this.receiver;
     this.transactionData.books = this.books;
     this.transactionData.totalPrice = this.totalPrice;
-    console.log(this.sender);
-    console.log(this.receiver);
+    console.log('new transaction sender = ', this.sender);
+    console.log('new transaction receiver = ', this.receiver);
+    console.log('new transaction books = ', this.books);
   }
 
   addTransaction() {
-    this.rest.addTransaction(this.transactionData).subscribe(
+    this.addToClientBooks();
+    this.restService.addTransaction(this.transactionData).subscribe(
       (result: Transaction) => {
-        console.log(result);
-        localStorage.removeItem('');
         this.cart.clearCart();
         this.router.navigate(['/']);
       },
@@ -44,5 +57,27 @@ export class TransactionAddComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  addToClientBooks() {
+    //se isClientReceiver for true então é uma compra (o cliente é o receiver), caso contrário é uma venda (o cliente é o sender)
+    if (this.isClientReceiver) {
+      for (let book of this.transactionData.books) {
+        this.transactionData.receiver.booksBought.push(book);
+      }
+      this.restService
+        .updateCliente(
+          this.transactionData.receiver._id,
+          this.transactionData.receiver
+        )
+        .subscribe(
+          (result) => {
+            console.log(JSON.stringify(this.transactionData.receiver));
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    }
   }
 }

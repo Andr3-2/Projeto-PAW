@@ -8,37 +8,43 @@ import { Book } from '../Models/book';
 export class ShoppingCartService {
   private _cart: Book[];
   cart: BehaviorSubject<Book[]>;
-  _total: Number = 0;
+  private _total: Number = 0;
+  total: BehaviorSubject<any>;
 
   constructor() {
-    this.cart = new BehaviorSubject<Book[]>([]);
     this._cart = [];
-
-    //this._total = new BehaviorSubject<Number>(0);
+    this.cart = new BehaviorSubject<Book[]>([]);
+    this._total = 0;
+    this.total = new BehaviorSubject<any>("0");
+    
 
     if (typeof Storage !== 'undefined') {
       let sessionDataCart = sessionStorage.getItem('cart');
       let sessionDataTotal = sessionStorage.getItem('total');
 
       console.log(sessionDataCart);
+      console.log('sessionDataTotal: ', sessionDataTotal);
+
       if (sessionDataCart != null) {
         this._cart = JSON.parse(sessionDataCart);
         this.cart.next(this._cart);
       }
       if (sessionDataTotal != null) {
-        sessionStorage.setItem('total', '0');
+        this._total = Number(sessionDataTotal);
+        this.total.next(this._total);
       }
     } else {
       //sorry your browser doesnt support sessionStorage
     }
   }
-  
+
   getTotal() {
     let newtotal = 0;
-    this._cart.forEach((book) => {
-      newtotal += book.new_price.valueOf();
-    });
+    for (let book of this._cart) {
+      newtotal += Number(book.new_price);
+    }
     this._total = newtotal;
+    this.total.next(this._total);
     sessionStorage.setItem('total', this._total.toString());
   }
 
@@ -53,12 +59,13 @@ export class ShoppingCartService {
     this._cart.splice(index, 1);
     this.cart.next(this._cart);
     sessionStorage.setItem('cart', JSON.stringify(this._cart));
+    this.getTotal();
   }
 
   clearCart() {
     this._cart = [];
     this.cart.next(this._cart);
     sessionStorage.setItem('cart', JSON.stringify(this._cart));
+    this.getTotal();
   }
-
 }

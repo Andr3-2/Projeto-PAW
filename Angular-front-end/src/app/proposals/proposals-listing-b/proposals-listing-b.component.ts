@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Proposal } from '../../Models/proposal';
 import { Book } from 'src/app/Models/book';
 import { Transaction } from 'src/app/Models/transaction';
+import { Cliente } from 'src/app/Models/cliente';
 
 @Component({
   selector: 'app-proposals-listing-b',
@@ -13,20 +14,42 @@ import { Transaction } from 'src/app/Models/transaction';
 export class ProposalsListingBComponent implements OnInit {
   proposals: Proposal[] = [];
   receiver: any; //adicinar aos campos da proposal maybe
+  user: any;
 
   constructor(private restService: RestService, private router: Router) {}
 
   ngOnInit(): void {
+    //get proposals
+    this.getUser();
     this.getProposals();
+    //get employee for receiver na transaction
     this.restService.getEmployees().subscribe((employeesData) => {
       this.receiver = employeesData[0];
     });
   }
 
-  getProposals(): void { //modificar para apenas receber as proposals do cliente
-    this.restService
-      .getProposals()
-      .subscribe((proposals) => (this.proposals = proposals));
+  getUser() {
+    //recebe o cliente logado
+    let currentUserToken: string;
+    let userStorageString: any = localStorage.getItem('currentUser');
+
+    if (userStorageString != null) {
+      currentUserToken = JSON.parse(userStorageString).token;
+      this.restService.getUser(currentUserToken).subscribe((user) => {
+        this.user = user;
+      });
+    }
+  }
+
+  getProposals(): void {
+    //recebe todas as proposals cujo sender seja igual ao cliente logado
+    this.restService.getProposals().subscribe((proposals) => {
+      for (let proposal of proposals) {
+        if (proposal.sender._id == this.user._id) {
+          this.proposals.push(proposal);
+        }
+      }
+    });
   }
 
   refuseProposal(id: string) {
