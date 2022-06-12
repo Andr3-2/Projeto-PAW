@@ -19,9 +19,7 @@ export class ProposalsListingBComponent implements OnInit {
   constructor(private restService: RestService, private router: Router) {}
 
   ngOnInit(): void {
-    //get proposals
     this.getUser();
-    this.getProposals();
     //get employee for receiver na transaction
     this.restService.getEmployees().subscribe((employeesData) => {
       this.receiver = employeesData[0];
@@ -37,6 +35,7 @@ export class ProposalsListingBComponent implements OnInit {
       currentUserToken = JSON.parse(userStorageString).token;
       this.restService.getUser(currentUserToken).subscribe((user) => {
         this.user = user;
+        this.getProposals();
       });
     }
   }
@@ -44,6 +43,7 @@ export class ProposalsListingBComponent implements OnInit {
   getProposals(): void {
     //recebe todas as proposals cujo sender seja igual ao cliente logado
     this.restService.getProposals().subscribe((proposals) => {
+      this.proposals = [];
       for (let proposal of proposals) {
         if (proposal.sender._id == this.user._id) {
           this.proposals.push(proposal);
@@ -56,6 +56,7 @@ export class ProposalsListingBComponent implements OnInit {
     this.restService.deleteProposal(id).subscribe(
       (res) => {
         this.getProposals();
+        console.log('proposal refused');
       },
       (err) => {
         console.log(err);

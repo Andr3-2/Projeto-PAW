@@ -81,8 +81,8 @@ const routes: Routes = [
   { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard,RoleGuard] },
   { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard,RoleGuard]},
 
-  { path: 'proposal-details/:id', component: ProposalDetailsComponent, canActivate: [AuthGuard,RoleGuard]},
-  { path: 'proposal-edit/:id', component: ProposalEditComponent , canActivate: [AuthGuard,RoleGuard]},
+  { path: 'proposal-details/:id', component: ProposalDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'proposal-edit/:id', component: ProposalEditComponent , canActivate: [AuthGuard]},
 
   { path: 'notifications', component: NotificationsListingComponent, canActivate: [AuthGuard,RoleGuard,RoleGuard]},
   { path: 'notification-details/:id', component: NotificationDetailsComponent, canActivate: [AuthGuard,RoleGuard,RoleGuard]},

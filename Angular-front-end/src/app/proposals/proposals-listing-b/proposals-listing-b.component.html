@@ -13,7 +13,7 @@
     </tr>
     <tr *ngFor="let proposal of proposals; index as i">
       <td>
-        <a routerLink="/notification-details/{{ proposal._id }}"> {{ i }}</a>
+        <a routerLink="/proposal-details/{{ proposal._id }}"> {{ i }}</a>
       </td>
       <td>{{ proposal.date }}</td>
       <td>{{ proposal.title }}</td>
@@ -30,7 +30,7 @@
           (click)="
             acceptProposal(proposal.sender, proposal.books, proposal._id)
           "
-          disabled="!{{ proposal.checkedByEmployee }}"
+          [disabled]="!proposal.checkedByEmployee"
         >
           Accept
         </button>
@@ -39,10 +39,11 @@
         <button (click)="refuseProposal(proposal._id)">Refuse</button>
       </td>
       <td>
-        <button routerLink="/notification-edit/{{ proposal._id }}">
+        <button routerLink="/proposal-edit/{{ proposal._id }}">
           Update
         </button>
       </td>
     </tr>
   </table>
 </div>
+

@@ -3,19 +3,60 @@
 
   <div>
     <label
-      >Transaction Date:
-      <input [(ngModel)]="transactionData.date" placeholder="data" disabled /> </label
+      >Date:
+      <input
+        [(ngModel)]="transactionData.date"
+        placeholder="data"
+        disabled
+      /> </label
     ><br />
-    <label>Transaction Sender: <input value="{{ sender.fname }}" disabled /> </label
+    <label>Sender: <input value="{{ sender.fname }}" disabled /> </label><br />
+    <label>Receiver: <input value="{{ receiver.fname }}" disabled /> </label
     ><br />
-    <label>Transaction Receiver: <input value="{{ receiver.fname }}" disabled /> </label
+    <label
+      >Receiver Points: <input value="{{ receiver.points }}" disabled /> </label
     ><br />
-    <label>Transaction Books: <input *ngFor="let book of books" value="{{ book.title }}" disabled /> </label><br />
-    <label>Transaction TotalPrice: <input value="{{ totalPrice }}" disabled/> </label
+    <label
+      >Books:
+      <input
+        *ngFor="let book of books"
+        value="{{ book.title }}"
+        disabled
+      /> </label
+    ><br />
+    <label>TotalPrice: <input value="{{ totalPrice }}€" disabled /> </label
     ><br />
     <div class="button-display">
       <button class="button" routerLink="/">Home</button>
-      <button class="button" (click)="addTransaction()">Confirm Transaction Transa</button>
+      <button class="button" (click)="addTransaction()">
+        Confirm Transaction
+      </button>
     </div>
   </div>
+</div>
+
+<div>
+  <label
+    >Discount Selected: <input value="{{ discountSelected }}%" disabled />
+  </label>
+  <div *ngIf="discountSelected != 0">
+      <label
+    >Discounted Price: <input value="{{ discountedPrice }}€" disabled />
+  </label>
+  </div>
+
+  <h1>Trade Points by Discount</h1>
+
+  <button [disabled]="discountSelected == 10 || receiver.points < 100" class="button" (click)="selectDiscount(10)">
+    100 Points per 10% Discount
+  </button>
+  <button [disabled]="discountSelected == 25 || receiver.points < 300" class="button" (click)="selectDiscount(25)">
+    300 Points per 25% Discount
+  </button>
+  <button [disabled]="discountSelected == 50 || receiver.points < 600" class="button" (click)="selectDiscount(50)">
+    600 Points per 50% Discount
+  </button>
+    <button [disabled]="discountSelected == 0" class="button" (click)="selectDiscount(0)">
+    No Discount
+  </button>
 </div>

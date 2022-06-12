@@ -49,7 +49,7 @@ export class ProposalAddComponent implements OnInit {
     this.restService.addProposal(this.proposalData).subscribe(
       (result: Proposal) => {
         console.log(result);
-        this.router.navigate(['/proposals']);
+        this.router.navigate(['/proposals-b']);
       },
       (err) => {
         console.log(err);

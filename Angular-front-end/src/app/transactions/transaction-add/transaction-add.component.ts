@@ -22,6 +22,9 @@ export class TransactionAddComponent implements OnInit {
     date: new Date(),
   };
 
+  discountSelected: number = 0;
+  discountedPrice: number = 0;
+
   constructor(
     public restService: RestService,
     private router: Router,
@@ -34,8 +37,14 @@ export class TransactionAddComponent implements OnInit {
     this.transactionData.sender = this.sender;
     this.transactionData.receiver = this.receiver;
     this.transactionData.books = this.books;
-    this.transactionData.totalPrice = this.totalPrice;
 
+    if (this.discountSelected != 0) {
+      this.transactionData.totalPrice = this.discountedPrice;
+    } else {
+      this.transactionData.totalPrice = this.totalPrice;
+    }
+
+    this.addToClientPoints();
     this.addToClientBooks();
     this.restService.addTransaction(this.transactionData).subscribe(
       (result: Transaction) => {
@@ -46,6 +55,33 @@ export class TransactionAddComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  addToClientPoints() {
+    let points: number = this.transactionData.totalPrice * 5;
+
+    if (this.isClientReceiver) {
+      this.transactionData.receiver.points += points;
+
+      switch (this.discountSelected) {
+        case 10: {
+          this.transactionData.receiver.points -= 100;
+          break;
+        }
+        case 25: {
+          this.transactionData.receiver.points -= 300;
+          break;
+        }
+        case 50: {
+          this.transactionData.receiver.points -= 600;
+          break;
+        }
+        default: {
+          //statements;
+          break;
+        }
+      }
+    }
   }
 
   addToClientBooks() {
@@ -67,5 +103,12 @@ export class TransactionAddComponent implements OnInit {
           }
         );
     }
+  }
+
+  selectDiscount(discountValue: number) {
+    this.discountSelected = discountValue;
+    this.discountedPrice = (this.totalPrice * (100 - discountValue)) / 100;
+
+    console.log(this.discountSelected);
   }
 }
