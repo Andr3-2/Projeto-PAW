@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h2>Book Update</h2>
   <div>
     <label
@@ -60,7 +60,8 @@
       /> </label
     ><br />
   </div>
-  <button (click)="updateBook()">update</button>
+  <div class="button-display">
+    <button class="button" (click)="updateBook()">update</button>
+    <button class="button" routerLink="/">Home</button>
+  </div>
 </div>
-<button routerLink="/">Home</button>
-

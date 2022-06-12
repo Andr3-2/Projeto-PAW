@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>Update</h1>
+  <label
+    >First Name:
+    <input [(ngModel)]="clienteData.fname" placeholder="Client fname" /> </label
+  ><br />
+  <label
+    >Last Name:
+    <input [(ngModel)]="clienteData.lname" placeholder="Client lname" /> </label
+  ><br />
+  <label
+    >Email:
+    <input [(ngModel)]="clienteData.email" placeholder="Client email" /> </label
+  ><br />
+  <label
+    >Address:
+    <input
+      [(ngModel)]="clienteData.address"
+      placeholder="Client address"
+    /> </label
+  ><br />
+  <label
+    >Zipcode:
+    <input
+      [(ngModel)]="clienteData.zipcode"
+      placeholder="Client zipcode"
+    /> </label
+  ><br />
+  <label
+    >City:
+    <input [(ngModel)]="clienteData.city" placeholder="Client city" /> </label
+  ><br />
+  <label
+    >Contact:
+    <input
+      type="number"
+      [(ngModel)]="clienteData.contact"
+      placeholder="Client contact"
+    /> </label
+  ><br />
+  <label
+    >NIF:
+    <input
+      type="number"
+      [(ngModel)]="clienteData.NIF"
+      placeholder="Client NIF"
+    /> </label
+  ><br />
+  <label
+    >Status:
+    <select
+      [(ngModel)]="clienteData.activityState"
+      placeholder="Client activityState"
+    >
+      <option value="ACTIVE">Active</option>
+      <option value="NOTACTIVE">not Active</option>
+    </select> </label
+  ><br />
+  <div class="button-display">
+    <button class="button" (click)="updateCliente()">Update</button>
+    <button class="button" routerLink="/clientes">Home</button>
+  </div>
+</div>

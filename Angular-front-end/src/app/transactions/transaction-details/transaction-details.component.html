@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>Transaction</h1>
+  <div *ngIf="transaction">
+    <table>
+      <tr>
+        <th>Date</th>
+        <td>{{ transaction.date }}</td>
+      </tr>
+      <tr>
+        <th>Sender</th>
+        <td>{{ transaction.sender }}</td>
+      </tr>
+      <tr>
+        <th>Receiver</th>
+        <td>{{ transaction.receiver }}</td>
+      </tr>
+      <tr>
+        <th>Books</th>
+        <td>{{ transaction.books }}</td>
+      </tr>
+      <tr>
+        <th>TotalPrice</th>
+        <td>{{ transaction.totalPrice }}</td>
+      </tr>
+    </table>
+
+    <div class="button-display">
+      <button
+        class="button"
+        routerLink="/transaction-edit/{{ transaction._id }}"
+      >
+        update
+      </button>
+      <button class="button" (click)="deleteTransaction(transaction._id)">
+        delete
+      </button>
+      <button class="button" routerLink="/">Home</button>
+    </div>
+  </div>
+</div>

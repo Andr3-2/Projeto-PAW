@@ -1,0 +1,41 @@
+<h1>Book Store</h1>
+
+<div>
+  <h6>Search Option</h6>
+  <input [(ngModel)]="search.search" type="text" />
+
+  <h6>Search Option</h6>
+  <select [(ngModel)]="search.searchOtp">
+    <option value="title">Title</option>
+    <option value="author">Auhor</option>
+  </select>
+
+  <button class="button" (click)="getsearch(search.searchOtp, search.search)">
+    Search
+  </button>
+</div>
+
+
+<div class="container">
+  <div *ngFor="let book of books" class="object">
+    <div class="text">
+      <span
+        ><a href="book-details-b/{{ book._id }}">{{ book.title }}</a></span
+      ><br />
+      <span>{{ book.new_price }}€</span>
+    </div>
+    <div class="image">
+      <img
+        src="http://smartmobilestudio.com/wp-content/uploads/2012/06/leather-book-preview.png"
+        alt="Book Image"
+        width="150"
+        height="150"
+      />
+    </div>
+    <div class="text">
+      <button class="button-green" (click)="addBookToCart(book)">
+        Adicionar ao Carrinho
+      </button>
+    </div>
+  </div>
+</div>

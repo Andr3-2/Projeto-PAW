@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  padding-top: 10px;
+}
+
+.item1 {
+  width: 70%;
+  padding: 20px;
+}
+.intem2 {
+  width: 20%;
+}
+
+

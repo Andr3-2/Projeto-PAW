@@ -1,0 +1,57 @@
+<div class="container">
+  <div *ngIf="employee" class="employees">
+    <h1>Bem Vindo! - {{ employee.fname }} {{ employee.lname }}</h1>
+
+    <table>
+      <tr>
+        <th>First Name:</th>
+        <td>{{ employee.fname }}</td>
+      </tr>
+      <tr>
+        <th>Last Name:</th>
+        <td>{{ employee.lname }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ employee.email }}</td>
+      </tr>
+      <tr>
+        <th>Address</th>
+        <td>{{ employee.address }}</td>
+      </tr>
+      <tr>
+        <th>Zipcode</th>
+        <td>{{ employee.zipcode }}</td>
+      </tr>
+      <tr>
+        <th>City</th>
+        <td>{{ employee.city }}</td>
+      </tr>
+      <tr>
+        <th>Contact</th>
+        <td>{{ employee.contact }}</td>
+      </tr>
+      <tr>
+        <th>NIF</th>
+        <td>{{ employee.NIF }}</td>
+      </tr>
+      <tr>
+        <th>Salary</th>
+        <td>{{ employee.salary }}</td>
+      </tr>
+      <tr>
+        <th>Activity State</th>
+        <td>{{ employee.activityState }}</td>
+      </tr>
+    </table>
+
+    <div class="button-display">
+      <button class="button" routerLink="/employee-edit/{{ employee._id }}">
+        update
+      </button>
+      <button class="button" routerLink="/employees">Home</button>
+    </div>
+  </div>
+</div>
+<div>
+</div>

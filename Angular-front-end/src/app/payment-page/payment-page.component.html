@@ -1,0 +1,17 @@
+<div *ngIf="isClientLoggedIn; else loggedOut">
+  <app-transaction-add
+    [isClientReceiver]="true"
+    [sender]="employee"
+    [receiver]="cliente"
+    [books]="cart"
+    [totalPrice]="totalPrice"
+  ></app-transaction-add>
+</div>
+
+<ng-template #loggedOut >
+  <h1 class="error">You need to be a client to make a purchase</h1>
+</ng-template>
+
+<div class="button-display">
+<button class="button" routerLink="/">Home</button>
+</div>

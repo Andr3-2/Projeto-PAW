@@ -1,9 +1,8 @@
-const { default: mongoose } = require("mongoose");
-var Book = require("../models/book");
+const Book = require("../models/book");
 
 var bookController = {};
 
-//## Read Books, Read Book, Delete Book, Create Book, Update Book
+//## Read Books, Read Book, Create Book, Update Book, Delete Book
 
 // mostra todos books
 bookController.showAll = function (req, res, next) {
@@ -12,7 +11,7 @@ bookController.showAll = function (req, res, next) {
       console.log("Erro a ler");
       next(err);
     } else {
-      console.log(dbBooks);
+      //console.log(dbBooks);
       res.json(dbBooks);
     }
   });
@@ -25,12 +24,13 @@ bookController.show = function (req, res, next) {
       console.log("Erro a ler");
       next(err);
     } else {
+      //console.log(dbBook);
       res.json(dbBook);
     }
   });
 };
 
-// cria 1 book como resposta a um post de um form
+// cria 1 book
 bookController.create = function (req, res, next) {
   var book = new Book(req.body);
 
@@ -39,18 +39,20 @@ bookController.create = function (req, res, next) {
       console.log("Erro a gravar");
       next(err);
     } else {
+      //console.log(book);
       res.json(book);
     }
   });
 };
 
-// edita 1 book como resposta a um post de um form editar
+// edita 1 book
 bookController.edit = function (req, res, next) {
   Book.findByIdAndUpdate(req.params.id, req.body, (err, editedBook) => {
     if (err) {
       console.log("Erro a gravar");
       next(err);
     } else {
+      //console.log(editedBook);
       res.json(editedBook);
     }
   });
@@ -62,9 +64,24 @@ bookController.delete = function (req, res, next) {
     if (err) {
       next(err);
     } else {
+      //console.log(deletedBook);
       res.json(deletedBook);
     }
   });
+};
+
+bookController.search = function (req, res, next) {
+  console.log(req.body.searchOpt);
+  console.log(req.body.search);
+  Book.find(
+    { [req.body.searchOpt]: { $regex: req.body.search } },
+    (err, books) => {
+      if (!books) return res.status(401).send("no Books found");
+      if (err) res.status(403).send("DataBase Error");
+      //console.log(books);
+      res.status(200).send(books);
+    }
+  );
 };
 
 module.exports = bookController;

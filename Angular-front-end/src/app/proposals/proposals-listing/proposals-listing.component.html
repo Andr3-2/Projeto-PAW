@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Proposals Listing</h1>
+
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Mensage</th>
+      <th>Book</th>
+    </tr>
+    <tr *ngFor="let proposal of proposals; index as i">
+      <td>
+        <a routerLink="/proposal-details/{{ proposal._id }}"> {{ i }}</a>
+      </td>
+      <td>{{ proposal.date }}</td>
+      <td>{{ proposal.title }}</td>
+      <td>{{ proposal.mensage }}</td>
+      <td>
+        <tr *ngFor="let book of proposal.books">
+          {{
+            book.title
+          }}
+        </tr>
+            <td>
+        <button
+          (click)="
+            acceptProposal(proposal.sender, proposal.books, proposal._id)
+          "
+          [disabled]="proposal.checkedByEmployee"
+        >
+          Accept
+        </button>
+      </td>
+      <td>
+        <button (click)="refuseProposal(proposal._id)">Refuse</button>
+      </td>
+      <td>
+        <button routerLink="/proposal-edit/{{ proposal._id }}">
+          Update
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

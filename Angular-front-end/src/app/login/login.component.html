@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="button-display">
+    <h1>LOGIN</h1>
+    <label>
+      <label
+        >Email: <input [(ngModel)]="user.email" placeholder="email"/> </label
+      ><br />
+      <label
+        >Password
+        <input
+          type="password"
+          [(ngModel)]="user.password"
+          placeholder="password"
+        /> </label
+      ><br />
+    </label>
+  </div>
+  <div class="button-display">
+    <button class="button"  (click)="login(user.email,user.password)">Log-in</button>
+  </div>
+</div>

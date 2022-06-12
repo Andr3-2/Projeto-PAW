@@ -1,2 +1,32 @@
-<router-outlet></router-outlet>
+<div class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BookStore</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/books">Books</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/employees"
+        >Employees</a
+      >
+      <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/clientes">Clients</a>
+      <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/proposals">Proposals</a>
+      <a class="navbar-brand"  *ngIf="btnadmin" routerLink="/notifications">Notifications</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/transactions">Transactions</a>
+      <a class="navbar-brand" *ngIf="!btnadmin" routerLink="/cliente-page">{{email}}</a>
+      <a class="navbar-brand" *ngIf="btnadmin" routerLink="/employee-page">{{email}}</a>
 
+    </div>
+
+    <button class="topbutton" *ngIf="btnlogout" (click)="logout()">
+      Logout
+    </button>
+    <button class="topbutton" *ngIf="btnlogin" routerLink="/register">
+      Register
+    </button>
+    <button class="topbutton" *ngIf="btnlogin" routerLink="/login">
+      Login
+    </button>
+  </nav>
+</div>
+<div class="header">
+  <img class="foto" [src]="'/assets/bookstore.jpg'"/>
+</div>
+<router-outlet></router-outlet>

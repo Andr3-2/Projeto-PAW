@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngIf="cliente" class="clientes">
+    <h1>Bem Vindo! - {{ cliente.fname }} {{ cliente.lname }}</h1>
+
+    <h3>Shipping Info:</h3>
+    <span>Address:{{ cliente.address }}</span
+    ><br />
+    <span>City:{{ cliente.city }}</span
+    ><br />
+    <span>ZipCode:{{ cliente.zipcode }}</span>
+    <h3>Contact Info:</h3>
+    <span>Email: {{ cliente.email }}</span
+    ><br />
+    <span>Contact:{{ cliente.contact }}</span
+    ><br />
+    <span>ZipCode:{{ cliente.zipcode }}</span>
+
+    <h3>Other Info:</h3>
+    <span>NIF: {{ cliente.NIF }}</span
+    ><br />
+    <span>Points:{{ cliente.points }}</span
+    ><br />
+
+    <h3>BooksBought</h3>
+    <div *ngFor="let book of cliente.booksBought">
+      <li routerLink="/book-details-b/{{ book.id }}">{{ book.title }}</li>
+    </div>
+
+    <h3>BooksSold</h3>
+    <div *ngFor="let book of cliente.booksSold">
+      <li routerLink="/book-details-b/{{ book.id }}">{{ book.title }}</li>
+    </div>
+
+    <div class="button-display">
+      <button class="button" routerLink="/cliente-edit/{{ cliente._id }}">
+        Update
+      </button>
+      <button class="button" routerLink="/main">Home</button>
+      <button class="button" routerLink="/proposals-b">Vender</button>
+    </div>
+    </div>
