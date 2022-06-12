@@ -16,6 +16,10 @@ router.get(
   "/show/:id",
   /*authController.verifyRoleAdmin,*/ proposalController.show
 );
+router.get(
+  "/showFromClient/:id",
+  /*authController.verifyRoleAdmin,*/ proposalController.showFromClient
+);
 router.post(
   "/create",
   /*authController.verifyRoleAdmin,*/ proposalController.create

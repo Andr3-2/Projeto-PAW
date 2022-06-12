@@ -1,19 +1,15 @@
-Stuff in the Cart
-
-<div *ngIf="cart.length > 0">
-  <h1>ShoppingCart</h1>
-  <div *ngFor="let book of cart; index as i">
-    <span>{{ book._id }}</span>
-  </div>
+<div *ngIf="isClientLoggedIn; else loggedOut">
+  <app-transaction-add
+    [isClientReceiver]="true"
+    [sender]="employee"
+    [receiver]="cliente"
+    [books]="cart"
+    [totalPrice]="totalPrice"
+  ></app-transaction-add>
 </div>
 
-
-<app-transaction-add
-[sender] = employee
-[receiver]= cliente
-[books] = cart
-[totalPrice] = totalPrice
-></app-transaction-add>
-
+<ng-template #loggedOut>
+  <div>You need to be a client to make a purchase</div>
+</ng-template>
 
 <button routerLink="/">Home</button>
