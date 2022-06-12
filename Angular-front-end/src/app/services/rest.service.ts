@@ -21,7 +21,7 @@ const httpOptions = {
 export class RestService {
   constructor(private http: HttpClient) {}
 
-  getUser(token: any) {
+  getUser(token: any): Observable<any> {
     return this.http.post<any>(endpoint + '/profile', { token });
   }
   // Books - #########################################################
@@ -191,6 +191,10 @@ export class RestService {
 
   getProposals(): Observable<Proposal[]> {
     return this.http.get<Proposal[]>(endpoint + 'proposals/show');
+  }
+
+  getProposalsFromClient(id: String): Observable<Proposal[]> {
+    return this.http.get<Proposal[]>(endpoint + 'proposals/showFromClient/' + id);
   }
 
   getProposal(id: String): Observable<Proposal> {

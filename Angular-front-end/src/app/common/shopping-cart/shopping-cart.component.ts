@@ -10,7 +10,7 @@ import { Book } from '../../Models/book';
 })
 export class ShoppingCartComponent implements OnInit {
   cart: Book[] = [];
-  total!: string;
+  total: Number = 0;
   constructor(
     private shoppingCartService: ShoppingCartService,
     private route: ActivatedRoute,
@@ -18,15 +18,15 @@ export class ShoppingCartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.shoppingCartService.cart.subscribe(
-      (cart) => {
-        this.cart = cart;
-        console.log(JSON.stringify(cart));
-      },
-      (_total) => {
-        this.total = _total;
-      }
-    );
+    this.shoppingCartService.cart.subscribe((cart) => {
+      this.cart = cart;
+      console.log(JSON.stringify(cart));
+    });
+
+    this.shoppingCartService.total.subscribe((total) => {
+      this.total = total;
+      console.log("preço total ", total);
+    });
   }
 
   addBookToCart(book: Book): void {

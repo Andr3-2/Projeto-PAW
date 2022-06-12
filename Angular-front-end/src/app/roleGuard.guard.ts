@@ -22,6 +22,7 @@ export class RoleGuard implements CanActivate {
     return this.adminAcess();
   }
 
+  //verifica se o role gravado em localStorage é admin
   adminAcess():boolean {
     var role = localStorage.getItem('role');
     if(role?.match("admin")) return true;

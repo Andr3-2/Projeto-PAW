@@ -19,9 +19,20 @@ export class ProposalAddComponent implements OnInit {
   constructor(private restService: RestService, private router: Router) {}
 
   ngOnInit(): void {
-    this.restService.getClientes().subscribe((clientesData) => {
-      this.proposalData.sender = clientesData[0];
-    });
+    this.getUser();
+  }
+
+  getUser() {
+    //recebe o cliente logado
+    let currentUserToken: string;
+    let userStorageString: any = localStorage.getItem('currentUser');
+
+    if (userStorageString != null) {
+      currentUserToken = JSON.parse(userStorageString).token;
+      this.restService.getUser(currentUserToken).subscribe((user) => {
+        this.proposalData.sender = user;
+      });
+    }
   }
 
   addBookToProposal() {
