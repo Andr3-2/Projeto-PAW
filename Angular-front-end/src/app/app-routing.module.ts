@@ -41,6 +41,7 @@ import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.comp
 import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
 import { BookDetailsBComponent } from './books/book-details-b/book-details-b.component';
+import { ProposalsListingBComponent } from './proposals/proposals-listing-b/proposals-listing-b.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'proposals', component: ProposalsListingComponent, canActivate: [AuthGuard]},
   { path: 'proposal-add', component: ProposalAddComponent , canActivate: [AuthGuard]},
   { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard] },
+  { path: 'proposals-b', component: ProposalsListingBComponent, canActivate: [AuthGuard] },
 
 
   { path: 'login', component: LoginComponent },

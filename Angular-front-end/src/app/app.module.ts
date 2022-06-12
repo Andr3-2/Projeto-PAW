@@ -49,6 +49,7 @@ import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.comp
 import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
 import { BookDetailsBComponent } from './books/book-details-b/book-details-b.component';
+import { ProposalsListingBComponent} from './proposals/proposals-listing-b/proposals-listing-b.component'
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import { BookDetailsBComponent } from './books/book-details-b/book-details-b.com
     ShoppingCartComponent,
     MainPageComponent,
     PaymentPageComponent,
-    
+
     LoginComponent,
     RegisterComponent,
     ClientePageComponent,
@@ -96,12 +97,18 @@ import { BookDetailsBComponent } from './books/book-details-b/book-details-b.com
     ProposalEditComponent,
     ProposalDetailsComponent,
     BookDetailsBComponent,
+    ProposalsListingBComponent,
   ],
-  imports: [CommonModule, BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    CommonModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
-
-
 export class AppModule {}
