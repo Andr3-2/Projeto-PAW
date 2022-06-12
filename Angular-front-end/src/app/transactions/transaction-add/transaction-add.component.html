@@ -26,15 +26,7 @@
     ><br />
     <label>TotalPrice: <input value="{{ totalPrice }}€" disabled /> </label
     ><br />
-    <div class="button-display">
-      <button class="button" routerLink="/">Home</button>
-      <button class="button" (click)="addTransaction()">
-        Confirm Transaction
-      </button>
-    </div>
-  </div>
-</div>
-
+    
 <div>
   <label
     >Discount Selected: <input value="{{ discountSelected }}%" disabled />
@@ -45,7 +37,7 @@
   </label>
   </div>
 
-  <h1>Trade Points by Discount</h1>
+  <h3>Trade Points by Discount</h3>
 
   <button [disabled]="discountSelected == 10 || receiver.points < 100" class="button" (click)="selectDiscount(10)">
     100 Points per 10% Discount
@@ -59,4 +51,12 @@
     <button [disabled]="discountSelected == 0" class="button" (click)="selectDiscount(0)">
     No Discount
   </button>
+</div>
+
+    <div class="button-display">
+      <button class="button-green" (click)="addTransaction()">
+        Confirm Transaction
+      </button>
+    </div>
+  </div>
 </div>
