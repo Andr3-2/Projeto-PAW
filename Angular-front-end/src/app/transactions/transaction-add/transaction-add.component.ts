@@ -28,25 +28,14 @@ export class TransactionAddComponent implements OnInit {
     private cart: ShoppingCartService
   ) {}
 
-  ngOnInit(): void {
-    if (this.isClientReceiver) {
-      console.log();
-      console.log(localStorage.getItem('role'));
-      console.log(typeof(localStorage.getItem('role')));
+  ngOnInit(): void {}
 
-      //alert('You need to be a client to buy books');
-    }
-
+  addTransaction() {
     this.transactionData.sender = this.sender;
     this.transactionData.receiver = this.receiver;
     this.transactionData.books = this.books;
     this.transactionData.totalPrice = this.totalPrice;
-    console.log('new transaction sender = ', this.sender);
-    console.log('new transaction receiver = ', this.receiver);
-    console.log('new transaction books = ', this.books);
-  }
 
-  addTransaction() {
     this.addToClientBooks();
     this.restService.addTransaction(this.transactionData).subscribe(
       (result: Transaction) => {
@@ -60,7 +49,6 @@ export class TransactionAddComponent implements OnInit {
   }
 
   addToClientBooks() {
-    //se isClientReceiver for true então é uma compra (o cliente é o receiver), caso contrário é uma venda (o cliente é o sender)
     if (this.isClientReceiver) {
       for (let book of this.transactionData.books) {
         this.transactionData.receiver.booksBought.push(book);
