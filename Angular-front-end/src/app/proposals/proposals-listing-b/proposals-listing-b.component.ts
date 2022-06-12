@@ -6,25 +6,24 @@ import { Book } from 'src/app/Models/book';
 import { Transaction } from 'src/app/Models/transaction';
 
 @Component({
-  selector: 'app-proposals-listing',
-  templateUrl: './proposals-listing.component.html',
-  styleUrls: ['./proposals-listing.component.css'],
+  selector: 'app-proposals-listing-b',
+  templateUrl: './proposals-listing-b.component.html',
+  styleUrls: ['./proposals-listing-b.component.css'],
 })
-export class ProposalsListingComponent implements OnInit {
+export class ProposalsListingBComponent implements OnInit {
   proposals: Proposal[] = [];
   receiver: any; //adicinar aos campos da proposal maybe
-  btnadmin = false;
+
   constructor(private restService: RestService, private router: Router) {}
 
   ngOnInit(): void {
-    if(localStorage.getItem('admin')?.match("admin")) this.btnadmin =true;
     this.getProposals();
     this.restService.getEmployees().subscribe((employeesData) => {
       this.receiver = employeesData[0];
     });
   }
 
-  getProposals(): void {
+  getProposals(): void { //modificar para apenas receber as proposals do cliente
     this.restService
       .getProposals()
       .subscribe((proposals) => (this.proposals = proposals));
@@ -43,7 +42,7 @@ export class ProposalsListingComponent implements OnInit {
 
   acceptProposal(sender: any, books: [Book], idProposal: string) {
     //modificar o array Books Sold do cliente e Adicionar os livros à loja
-    let totalPrice:number = 0;
+    let totalPrice: number = 0;
     for (let book of books) {
       this.restService.addBook(book).subscribe(
         (result: Book) => {
@@ -54,7 +53,9 @@ export class ProposalsListingComponent implements OnInit {
         }
       );
       sender.booksSold.push(book);
-      totalPrice += (book.new_price*book.new_quantity) + (book.used_price*book.used_quantity)
+      totalPrice +=
+        book.new_price * book.new_quantity +
+        book.used_price * book.used_quantity;
     }
 
     this.restService.updateCliente(sender._id, sender).subscribe(

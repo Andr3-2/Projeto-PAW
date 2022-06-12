@@ -24,12 +24,13 @@
             book.title
           }}
         </tr>
-            <td>
+      </td>
+      <td>
         <button
           (click)="
             acceptProposal(proposal.sender, proposal.books, proposal._id)
           "
-          disabled="{{ proposal.checkedByEmployee }}"
+          disabled="!{{ proposal.checkedByEmployee }}"
         >
           Accept
         </button>
