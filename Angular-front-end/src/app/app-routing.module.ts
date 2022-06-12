@@ -70,7 +70,7 @@ const routes: Routes = [
   { path: 'clientes', component: ClientesListingComponent , canActivate: [AuthGuard,RoleGuard]},
   { path: 'cliente-details/:id', component: ClienteDetailsComponent , canActivate: [AuthGuard,RoleGuard]},
   { path: 'cliente-add', component: ClienteAddComponent, canActivate: [AuthGuard,RoleGuard] },
-  { path: 'cliente-edit/:id', component: ClienteEditComponent , canActivate: [AuthGuard,RoleGuard]},
+  { path: 'cliente-edit/:id', component: ClienteEditComponent , canActivate: [AuthGuard]},
 
   { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'employee-details/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard,RoleGuard] },
