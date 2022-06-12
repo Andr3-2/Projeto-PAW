@@ -23,6 +23,7 @@ export class AuthenticationService {
     }
     localStorage.removeItem('currentUser');
     localStorage.removeItem('role');
+    localStorage.removeItem('email');
     alert('Loged Out');
     this.router.navigate(['/login']);
   }

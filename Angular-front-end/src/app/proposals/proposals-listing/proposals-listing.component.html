@@ -25,17 +25,17 @@
           }}
         </tr>
       <td>
-        <button (click)="acceptProposal(proposal.sender, proposal.books, proposal._id)">
+        <button *ngIf="btnadmin" (click)="acceptProposal(proposal.sender, proposal.books, proposal._id)">
           Accept
         </button>
       </td>
       <td>
-        <button routerLink="/notification-edit/{{ proposal._id }}">
+        <button *ngIf="btnadmin" routerLink="/notification-edit/{{ proposal._id }}">
           update
         </button>
       </td>
       <td>
-        <button (click)="deleteProposal(proposal._id)">delete</button>
+        <button *ngIf="btnadmin" (click)="deleteProposal(proposal._id)">delete</button>
       </td>
     </tr>
   </table>

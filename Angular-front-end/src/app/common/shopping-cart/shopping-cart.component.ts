@@ -3,7 +3,6 @@ import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../../Models/book';
 
-
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -11,7 +10,7 @@ import { Book } from '../../Models/book';
 })
 export class ShoppingCartComponent implements OnInit {
   cart: Book[] = [];
-
+  total!: string;
   constructor(
     private shoppingCartService: ShoppingCartService,
     private route: ActivatedRoute,
@@ -24,8 +23,8 @@ export class ShoppingCartComponent implements OnInit {
         this.cart = cart;
         console.log(JSON.stringify(cart));
       },
-      (err) => {
-        console.log(err);
+      (_total) => {
+        this.total = _total;
       }
     );
   }

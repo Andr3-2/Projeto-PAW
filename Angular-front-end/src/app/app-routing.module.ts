@@ -40,6 +40,7 @@ import { ProposalsListingComponent } from './proposals/proposals-listing/proposa
 import { ProposalAddComponent } from './proposals/proposal-add/proposal-add.component';
 import { ProposalEditComponent } from './proposals/proposal-edit/proposal-edit.component';
 import { ProposalDetailsComponent } from './proposals/proposal-details/proposal-details.component';
+import { BookDetailsBComponent } from './books/book-details-b/book-details-b.component';
 
 
 const routes: Routes = [
@@ -47,8 +48,16 @@ const routes: Routes = [
 
   { path: 'main', component: MainPageComponent },
   { path: 'payment/:cart', component: PaymentPageComponent },
+  { path: 'book-details-b/:id', component: BookDetailsBComponent},
   { path: 'cliente-page', component: ClientePageComponent ,canActivate: [AuthGuard] },
   { path: 'employee-page', component: EmployeePageComponent,canActivate: [AuthGuard,RoleGuard] },
+  { path: 'proposals', component: ProposalsListingComponent, canActivate: [AuthGuard]},
+  { path: 'proposal-add', component: ProposalAddComponent , canActivate: [AuthGuard]},
+  { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard] },
+
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
   //Admin Access
   { path: 'books', component: BooksListingComponent, canActivate: [AuthGuard,RoleGuard]},
@@ -64,25 +73,19 @@ const routes: Routes = [
   { path: 'employees', component: EmployeesListingComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'employee-details/:id', component: EmployeeDetailsComponent, canActivate: [AuthGuard,RoleGuard] },
   { path: 'employee-add', component: EmployeeAddComponent , canActivate: [AuthGuard,RoleGuard]},
-  { path: 'employee-edit/:id', component: EmployeeEditComponent, canActivate: [AuthGuard,RoleGuard] },
 
   { path: 'transactions', component: TransactionsListingComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'transaction-details/:id', component: TransactionDetailsComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'transaction-add', component: TransactionAddComponent, canActivate: [AuthGuard,RoleGuard] },
   { path: 'transaction-edit/:id', component: TransactionEditComponent , canActivate: [AuthGuard,RoleGuard]},
 
-  { path: 'proposals', component: ProposalsListingComponent, canActivate: [AuthGuard,RoleGuard]},
   { path: 'proposal-details/:id', component: ProposalDetailsComponent, canActivate: [AuthGuard,RoleGuard]},
-  { path: 'proposal-add', component: ProposalAddComponent , canActivate: [AuthGuard,RoleGuard]},
   { path: 'proposal-edit/:id', component: ProposalEditComponent , canActivate: [AuthGuard,RoleGuard]},
 
   { path: 'notifications', component: NotificationsListingComponent, canActivate: [AuthGuard,RoleGuard,RoleGuard]},
   { path: 'notification-details/:id', component: NotificationDetailsComponent, canActivate: [AuthGuard,RoleGuard,RoleGuard]},
   { path: 'notification-add', component: NotificationAddComponent, canActivate: [AuthGuard,RoleGuard] },
   { path: 'notification-edit/:id', component: NotificationEditComponent , canActivate: [AuthGuard,RoleGuard]},
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
